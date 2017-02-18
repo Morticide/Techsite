@@ -41,6 +41,7 @@ body{
 	padding:3%;
 	margin: 3%;
 }
+\\Sergei Test
 .item_container:hover{
 	border: 1px solid rgba(255, 255, 255, 0.79);
 	cursor: default;
