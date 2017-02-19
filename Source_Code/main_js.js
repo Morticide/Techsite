@@ -58,17 +58,15 @@ function backBtnClick(id){
 
 function problemPage(){
 	var newElements = ["Diagnostics","Virus Removal","Tune Up", "Software Install","Hardware Install","Other"];
-	curElements = function(){return this.curElements};
-	removeContents(newElements,curElements,7);
+	//curElements = function(){return this.curElements};
+	removeContents(newElements,this.curElements,7);
 }
 
 function drawClientPage(){
-	
 	var custName = '<input type="submit" value="Submit">';
 	var clientPage = '<div>Client Entry Page</div>';
 	var newElements = [custName,clientPage];
-	curElements = function(){return this.curElements};
-	removeContents(newElements,curElements,7);
+	removeContents(newElements,this.curElements,7);
 }
 
 function addBreadCrumb(breadCrumbText){
@@ -82,15 +80,6 @@ function addBreadCrumb(breadCrumbText){
 function slideFunct(animElement,duration,settings,marginValue) {
 		return animElement.animate({
 			marginLeft: marginValue
-		}, jQuery.speed(duration,settings));
-	};
-
-function paddingAdjustFunct(animElement,duration,settings,paddingVal) {
-		return animElement.animate({
-			'padding-top': paddingVal,
-			'padding-right': paddingVal,
-			'padding-left': paddingVal,
-			'padding-bottom': paddingVal,
 		}, jQuery.speed(duration,settings));
 	};
 	
@@ -132,7 +121,6 @@ function transistionSlideOutFadeIn(contentArray,id) {
 		contentArray.forEach(function(contentArray){
 			var tempContainer = $("<div onclick='osSelect("+id+")'></div>");
 			tempContainer.addClass("item_container");
-			tempContainer.css("display","inline-block");
 			osColorFunct(id,tempContainer);
 			tempContainer.append(contentArray);
 			newDynContainer.append(tempContainer);
@@ -146,13 +134,4 @@ function transistionSlideOutFadeIn(contentArray,id) {
 		newDynContainer.hide();
 		newDynContainer.fadeIn(300);
 		$(".main_container").append(newDynContainer);
-		
-		
-		/* var back_btn_container = $("<div></div>").addClass("back_icon_container");
-		var back_btn = $("<div></div>").addClass("back_icon");
-		back_btn.text("Go Back");
-		back_btn_container.append(back_btn);
-		back_btn_container.hide();
-		$("body").append(back_btn_container); 
-		back_btn_container.fadeIn("slow"); */
 	} 
