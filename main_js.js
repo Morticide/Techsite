@@ -3,25 +3,29 @@ $(document).ready(function(){
 	var removableItem = $(".main_container");
 	var removableItemTwo = $(".back_icon_container");
 	var curElements = [removableItem,removableItemTwo];
-	$("#1").click(function(){
-		var winImage = "Windows";
-		var macImage = "MacOS";
-		var chrImage = "ChromeOS";
-		
-		/* var macImage = "MacOS";
-		macImage.css('color':'#aaaaaa');
-		var chrImage = "Chrome OS";
-		chrImage.css('color':'#369a4b'); */
-		var contentArray = [winImage,macImage,chrImage];
-		addBreadCrumb("Repair my Device > ");
-		removeContents(contentArray,curElements,3);
-	});
-	$("#2").click(function(){
-		addBreadCrumb("Appointment Information > ");
-		drawClientPage();
-	}); 
+	$('#1').click(function(){ homePageFunct(1)});
+	$('#2').click(function(){ homePageFunct(2)});
 	
 });
+
+function homePageFunct(id){
+	
+	switch(id){
+		case 1:
+			var winImage = "Windows";
+			var macImage = "MacOS";
+			var chrImage = "ChromeOS";
+			var contentArray = [winImage,macImage,chrImage];
+			addBreadCrumb("Repair my Device > ");
+			removeContents(contentArray,this.curElements,3,1);
+			break;
+		case 2:
+			addBreadCrumb("Appointment Information > ");
+			drawClientPage();	
+			break;
+	}
+}
+	
 function osSelect(id){
 	switch(id){
 		case 3:
@@ -42,8 +46,10 @@ function osSelect(id){
 function backBtnClick(id){
 	switch(id){
 		case 6:
-			//addBreadCrumb("Windows > ");
-			//problemPage();
+			var repairDevice = "Repair my Device";
+			var clientInfo =   "<div>Look up my Appointment</div>";
+			var newElements = [repairDevice,clientInfo];
+			removeContents(newElements,this.curElements,1,2);
 			break;
 		case 4:
 			//addBreadCrumb("MacOS > ");
@@ -94,16 +100,25 @@ function paddingAdjustFunct(animElement,duration,settings,paddingVal) {
 		}, jQuery.speed(duration,settings));
 	};
 	
-function removeContents(contentArray,curElements,id){
+function removeContents(contentArray,curElements,id,direction){
 	console.log("removing contents");
 	var item = $(".sub_container");
-	slideFunct(item,600,'swing',-($(window).width()));
+	if(direction == 1){
+		slideFunct(item,600,'swing',-($(window).width()));
+	}
+	else{
+		item.css('margin-left','200px');
+		item.css('position','fixed');
+		slideFunct(item,600,'swing',($(window).width()));
+	}
+	
 	item.promise().done(function(){
 		item.remove();
 		transistionSlideOutFadeIn(contentArray,id);
 	});
 	
 }
+
 function osColorFunct(id,tempContainer){
 	switch(id){
 			case 3:
@@ -121,24 +136,29 @@ function osColorFunct(id,tempContainer){
 }
 function transistionSlideOutFadeIn(contentArray,id) {
 		console.log("Creating Content");
-		//removeContents();
 		var newDynContainer = $("<div></div>").addClass("sub_container");
-		//newDynContainer.attr('marginLeft', $(window).width());
-		newDynContainer.width("75%");
 		contentArray.forEach(function(contentArray){
-			var tempContainer = $("<div onclick='osSelect("+id+")'></div>");
+			if(id >= 3){
+				newDynContainer.width("75%");
+				var tempContainer = $("<div onclick='osSelect("+id+")'></div>");
+			}
+			else{
+				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
+			}
 			tempContainer.addClass("item_container");
-			tempContainer.css("display","inline-block");
 			osColorFunct(id,tempContainer);
 			tempContainer.append(contentArray);
 			newDynContainer.append(tempContainer);
 			id++;
 		});
-		var back_btn_container = $("<div></div>").addClass("back_btn_container");
-		var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
-		id++;
-		back_btn_container.append(back_btn);
-		newDynContainer.append(back_btn_container);
+		if(id == 3){} else{
+			var back_btn_container = $("<div></div>").addClass("back_btn_container");
+			var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
+			id++;
+			back_btn_container.append(back_btn);
+			newDynContainer.append(back_btn_container);
+		}
+		
 		newDynContainer.hide();
 		newDynContainer.fadeIn(300);
 		$(".main_container").append(newDynContainer);
