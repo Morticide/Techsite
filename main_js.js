@@ -34,8 +34,7 @@ function continueFunct(){
 			slctOptions.push(temp.text());
 		}
 	}
-	removeContents(3,"",1);
-	drawClientPage();
+	removeContents(3,slctOptions,1);
 }
 
 function btnOptions(id){
@@ -91,12 +90,17 @@ function problemPage(){
 	removeContents(newElements,7,1);
 }
 
-function drawClientPage(){
+function drawClientPage(slctOptions){
+	var form = $("<form></form>");
+	var firstNameLab = $("<label for='firstname'>Last Name</label>");
+	var firstName = $("<input type='text' name = 'firstname'>");
+	var firstField = [firstNameLab,firstName];
+	var lastNameLab = $("<label for='lastname'>Last Name</label>");
+	var lastName = $("<input type='text' mame = 'lastname'>");
+	var secondField = [lastNameLab,lastName];
+	var newElements = [firstField,secondField];
+	transistionSlideOutFadeIn(newElements,15);
 	
-	var custName = '<input type="submit" value="Submit">';
-	var clientPage = '<div>Client Entry Page</div>';
-	var newElements = [custName,clientPage];
-	removeContents(newElements,this.curElements,7);
 }
 
 function addBreadCrumb(breadCrumbText){
@@ -126,7 +130,7 @@ function removeContents(content,id,action){
 	
 	item.promise().done(function(){
 		item.remove();
-		if(content == 3);
+		if(content == 3){drawClientPage(id);}
 		else{
 			transistionSlideOutFadeIn(content,id);
 		}
@@ -149,11 +153,17 @@ function transistionSlideOutFadeIn(content,id) {
 			if(id >= 3){
 				newDynContainer.width("75%");
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
+				tempContainer.addClass("item_container");
+			}
+			else if (id >= 15){
+				newDynContainer.width("75%");
+				var tempContainer = $("<div id="+id+"></div>");
+				tempContainer.addClass("input");
 			}
 			else{
 				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
+				tempContainer.addClass("item_container");
 			}
-			tempContainer.addClass("item_container");
 			osColorFunct(id,tempContainer);
 			tempContainer.append(content);
 			newDynContainer.append(tempContainer);
