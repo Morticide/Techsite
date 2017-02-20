@@ -39,9 +39,9 @@ function continueFunct(){
 
 function btnOptions(id){
 	switch(id){
-		case 3:addBreadCrumb("Windows > ");problemPage();break;
-		case 4:addBreadCrumb("MacOS > ");problemPage();break;
-		case 5:addBreadCrumb("Chrome OS > ");problemPage();break;
+		case 3:addBreadCrumb("Windows > ");problemPage(1);break;
+		case 4:addBreadCrumb("MacOS > ");problemPage(1);break;
+		case 5:addBreadCrumb("Chrome OS > ");problemPage(1);break;
 		case 7:var tag = $("#7");selToggle(tag);break;
 		case 8:var tag = $("#8");selToggle(tag);break;
 		case 9:var tag = $("#9");selToggle(tag);break;
@@ -82,12 +82,16 @@ function backBtnClick(id){
 			});
 			removeContents(contentArray,3,2);
 			break;
+		default:
+			problemPage(2);
+			break;
 	}
 }
 
-function problemPage(){
+function problemPage(action){
 	var newElements = ["Diagnostics","Virus Removal","Tune Up", "Software Install","Hardware Install","Other"];
-	removeContents(newElements,7,1);
+	if(action == 1){removeContents(newElements,7,1);}
+	else if(action == 2){removeContents(newElements,7,2);}
 }
 
 function drawClientPage(slctOptions){
@@ -99,8 +103,13 @@ function drawClientPage(slctOptions){
 	var lastName = $("<input type='text' mame = 'lastname'>");
 	var secondField = [lastNameLab,lastName];
 	var newElements = [firstField,secondField];
+	slctOptions.forEach(function(slctOptions){
+		var repairOpt = $("<div></div>");
+		repairOpt.addClass("input");
+		repairOpt.append(slctOptions);
+		newElements.push(repairOpt);
+	});
 	transistionSlideOutFadeIn(newElements,15);
-	
 }
 
 function addBreadCrumb(breadCrumbText){
