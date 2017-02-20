@@ -1,3 +1,5 @@
+/*global $*/
+/*global jQuery*/
 $(document).ready(function(){
 	
 	$('#1').click(function(){ homePageFunct(1)});
@@ -21,8 +23,19 @@ function homePageFunct(id){
 	}
 }
 
-function continue(){
-	removeContents()
+function continueFunct(){
+	var i;
+	var slctOptions = [];
+	for(i = 7; i <= 12; i++){
+		var temp = $('#'+i);
+		console.log("running through for loop");
+		if(temp.attr('class') == "item_container item_container_selected"){
+			console.log(temp.text());
+			slctOptions.push(temp.text());
+		}
+	}
+	removeContents(3,"",1);
+	drawClientPage();
 }
 
 function btnOptions(id){
@@ -100,9 +113,9 @@ function slideFunct(animElement,duration,settings,marginValue) {
 		}, jQuery.speed(duration,settings));
 	};
 	
-function removeContents(content,id,direction){
+function removeContents(content,id,action){
 	var item = $(".sub_container");
-	if(direction == 1){
+	if(action == 1){
 		slideFunct(item,600,'swing',-($(window).width()));
 	}
 	else{
@@ -113,7 +126,11 @@ function removeContents(content,id,direction){
 	
 	item.promise().done(function(){
 		item.remove();
-		transistionSlideOutFadeIn(content,id);
+		if(content == 3);
+		else{
+			transistionSlideOutFadeIn(content,id);
+		}
+		
 	});
 	
 }
@@ -148,7 +165,7 @@ function transistionSlideOutFadeIn(content,id) {
 			var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
 			if(id == 13){
 				id++;
-				var continue_btn = $("<div id = "+id+" onclick='continue()'> Continue </div>").addClass("back_btn");
+				var continue_btn = $("<div id = "+id+" onclick='continueFunct()'> Continue </div>").addClass("back_btn");
 				back_btn_container.append(back_btn,continue_btn);
 			}
 			else{back_btn_container.append(back_btn);}
