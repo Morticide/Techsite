@@ -38,29 +38,39 @@ function osSelect(id){
 			problemPage();
 			break;
 		case 7:
-			if($("#7").attr('class') == 'item_container_selected'){
-				$("#7").removeClass("item_container_selected");
-			}
-			else{
-				$("#7").addClass("item_container_selected");
-			}
+			var tag = $("#7");
+			selToggle(tag);
 			break;
 		case 8:
-			$("#8").addClass("item_container_selected");
+			var tag = $("#8");
+			selToggle(tag);
 			break;
 		case 9:
-			$("#9").addClass("item_container_selected");
+			var tag = $("#9");
+			selToggle(tag);
 			break;
 		case 10:
-			$("#10").addClass("item_container_selected");
+			var tag = $("#10");
+			selToggle(tag);
 			break;
 		case 11:
-			$("#11").addClass("item_container_selected");
+			var tag = $("#11");
+			selToggle(tag);
 			break;
 		case 12:
-			$("#12").addClass("item_container_selected");
+			var tag = $("#12");
+			selToggle(tag);
 			break;
 			
+	}
+}
+
+function selToggle(tag){
+	if(tag.attr('class') == 'item_container item_container_selected'){
+		tag.removeClass("item_container_selected");
+	}
+	else{
+		tag.addClass("item_container_selected");
 	}
 }
 
