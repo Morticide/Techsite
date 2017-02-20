@@ -17,51 +17,25 @@ function homePageFunct(id){
 			removeContents(contentArray,3,1);
 			break;
 		case 2:
-			addBreadCrumb("Appointment Information > ");
-			drawClientPage();	
 			break;
 	}
 }
-	
-function osSelect(id){
+
+function continue(){
+	removeContents()
+}
+
+function btnOptions(id){
 	switch(id){
-		case 3:
-			addBreadCrumb("Windows > ");
-			problemPage();
-			break;
-		case 4:
-			addBreadCrumb("MacOS > ");
-			problemPage();
-			break;
-		case 5:
-			addBreadCrumb("Chrome OS > ");
-			problemPage();
-			break;
-		case 7:
-			var tag = $("#7");
-			selToggle(tag);
-			break;
-		case 8:
-			var tag = $("#8");
-			selToggle(tag);
-			break;
-		case 9:
-			var tag = $("#9");
-			selToggle(tag);
-			break;
-		case 10:
-			var tag = $("#10");
-			selToggle(tag);
-			break;
-		case 11:
-			var tag = $("#11");
-			selToggle(tag);
-			break;
-		case 12:
-			var tag = $("#12");
-			selToggle(tag);
-			break;
-			
+		case 3:addBreadCrumb("Windows > ");problemPage();break;
+		case 4:addBreadCrumb("MacOS > ");problemPage();break;
+		case 5:addBreadCrumb("Chrome OS > ");problemPage();break;
+		case 7:var tag = $("#7");selToggle(tag);break;
+		case 8:var tag = $("#8");selToggle(tag);break;
+		case 9:var tag = $("#9");selToggle(tag);break;
+		case 10:var tag = $("#10");selToggle(tag);break;
+		case 11:var tag = $("#11");selToggle(tag);break;
+		case 12:var tag = $("#12");selToggle(tag);break;
 	}
 }
 
@@ -132,7 +106,7 @@ function removeContents(content,id,direction){
 		slideFunct(item,600,'swing',-($(window).width()));
 	}
 	else{
-		item.css('margin-left','200px');
+		item.css('marginLeft','200px');
 		item.css('position','fixed');
 		slideFunct(item,600,'swing',($(window).width()));
 	}
@@ -146,17 +120,10 @@ function removeContents(content,id,direction){
 
 function osColorFunct(id,tempContainer){
 	switch(id){
-			case 3:
-				tempContainer.css('background-color', 'rgba(0,173,239,.7)');
-				break;
-			case 4:
-				tempContainer.css('background-color', 'rgba(170,170,170,.7)');
-				break;
-			case 5:
-				tempContainer.css('background-color', 'rgba(54,154,75,.7)');
-				break;
+			case 3:tempContainer.css('background-color', 'rgba(0,173,239,.7)');break;
+			case 4:tempContainer.css('background-color', 'rgba(170,170,170,.7)');break;
+			case 5:tempContainer.css('background-color', 'rgba(54,154,75,.7)');break;
 	}
-	console.log("Returning Recent Container");
 	return tempContainer;
 }
 function transistionSlideOutFadeIn(content,id) {
@@ -164,7 +131,7 @@ function transistionSlideOutFadeIn(content,id) {
 		content.forEach(function(content){
 			if(id >= 3){
 				newDynContainer.width("75%");
-				var tempContainer = $("<div onclick='osSelect("+id+")' id = "+id+"></div>");
+				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 			}
 			else{
 				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
@@ -180,7 +147,8 @@ function transistionSlideOutFadeIn(content,id) {
 			var back_btn_container = $("<div></div>").addClass("back_btn_container");
 			var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
 			if(id == 13){
-				var continue_btn = $("<div onclick='continue()'> Continue </div>").addClass("back_btn");
+				id++;
+				var continue_btn = $("<div id = "+id+" onclick='continue()'> Continue </div>").addClass("back_btn");
 				back_btn_container.append(back_btn,continue_btn);
 			}
 			else{back_btn_container.append(back_btn);}
