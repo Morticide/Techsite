@@ -11,12 +11,13 @@ body{
 	border-radius: 5px;
 	border: 1px solid rgba(255, 255, 255, 0.72);
 	padding:3%;
-	margin-top:3%;
+	margin: 4%;
+	display: inline-block;
 }
 .back_btn_container{
 	text-align:center;
 	margin:auto;
-	width: 200px;
+	width: 300px;
 }
 .back_btn:hover{
 	cursor: default;
@@ -47,6 +48,12 @@ body{
 	border: 1px solid rgba(255, 255, 255, 0.79);
 	cursor: default;
 	background-color: rgba(0, 37, 90, 0.45);
+}
+.item_container_selected{
+	background-color: rgba(0, 37, 90, 0.70);
+}
+.item_container_selected:hover{
+	background-color: rgba(0, 37, 90, 0.70);
 }
 .main_container{
 	margin: 10% auto auto auto;

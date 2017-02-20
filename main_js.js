@@ -1,8 +1,5 @@
 $(document).ready(function(){
 	
-	var removableItem = $(".main_container");
-	var removableItemTwo = $(".back_icon_container");
-	var curElements = [removableItem,removableItemTwo];
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
 	
@@ -12,12 +9,12 @@ function homePageFunct(id){
 	
 	switch(id){
 		case 1:
+			addBreadCrumb("Repair my Device > ");
 			var winImage = "Windows";
 			var macImage = "MacOS";
 			var chrImage = "ChromeOS";
 			var contentArray = [winImage,macImage,chrImage];
-			addBreadCrumb("Repair my Device > ");
-			removeContents(contentArray,this.curElements,3,1);
+			removeContents(contentArray,3,1);
 			break;
 		case 2:
 			addBreadCrumb("Appointment Information > ");
@@ -40,6 +37,30 @@ function osSelect(id){
 			addBreadCrumb("Chrome OS > ");
 			problemPage();
 			break;
+		case 7:
+			if($("#7").attr('class') == 'item_container_selected'){
+				$("#7").removeClass("item_container_selected");
+			}
+			else{
+				$("#7").addClass("item_container_selected");
+			}
+			break;
+		case 8:
+			$("#8").addClass("item_container_selected");
+			break;
+		case 9:
+			$("#9").addClass("item_container_selected");
+			break;
+		case 10:
+			$("#10").addClass("item_container_selected");
+			break;
+		case 11:
+			$("#11").addClass("item_container_selected");
+			break;
+		case 12:
+			$("#12").addClass("item_container_selected");
+			break;
+			
 	}
 }
 
@@ -47,25 +68,30 @@ function backBtnClick(id){
 	switch(id){
 		case 6:
 			var repairDevice = "Repair my Device";
-			var clientInfo =   "<div>Look up my Appointment</div>";
+			var clientInfo =   "Look up my Appointment";
 			var newElements = [repairDevice,clientInfo];
-			removeContents(newElements,this.curElements,1,2);
+			$(".bread_crumb").last().fadeOut(600,'swing');
+			$(".bread_crumb").last().promise().done(function(){
+				$(".bread_crumb").last().remove();
+			});
+			removeContents(newElements,1,2);
 			break;
-		case 4:
-			//addBreadCrumb("MacOS > ");
-			//problemPage();
-			break;
-		case 5:
-			//addBreadCrumb("Chrome OS > ");
-			//problemPage();
+		case 13:
+			var winImage = "Windows";
+			var macImage = "MacOS";
+			var chrImage = "ChromeOS";
+			var contentArray = [winImage,macImage,chrImage];
+			$(".bread_crumb").last().fadeOut(600,'swing').promise().done(function(){
+				$(".bread_crumb").last().remove();
+			});
+			removeContents(contentArray,3,2);
 			break;
 	}
 }
 
 function problemPage(){
 	var newElements = ["Diagnostics","Virus Removal","Tune Up", "Software Install","Hardware Install","Other"];
-	curElements = function(){return this.curElements};
-	removeContents(newElements,curElements,7);
+	removeContents(newElements,7,1);
 }
 
 function drawClientPage(){
@@ -73,8 +99,7 @@ function drawClientPage(){
 	var custName = '<input type="submit" value="Submit">';
 	var clientPage = '<div>Client Entry Page</div>';
 	var newElements = [custName,clientPage];
-	curElements = function(){return this.curElements};
-	removeContents(newElements,curElements,7);
+	removeContents(newElements,this.curElements,7);
 }
 
 function addBreadCrumb(breadCrumbText){
@@ -90,18 +115,8 @@ function slideFunct(animElement,duration,settings,marginValue) {
 			marginLeft: marginValue
 		}, jQuery.speed(duration,settings));
 	};
-
-function paddingAdjustFunct(animElement,duration,settings,paddingVal) {
-		return animElement.animate({
-			'padding-top': paddingVal,
-			'padding-right': paddingVal,
-			'padding-left': paddingVal,
-			'padding-bottom': paddingVal,
-		}, jQuery.speed(duration,settings));
-	};
 	
-function removeContents(contentArray,curElements,id,direction){
-	console.log("removing contents");
+function removeContents(content,id,direction){
 	var item = $(".sub_container");
 	if(direction == 1){
 		slideFunct(item,600,'swing',-($(window).width()));
@@ -114,7 +129,7 @@ function removeContents(contentArray,curElements,id,direction){
 	
 	item.promise().done(function(){
 		item.remove();
-		transistionSlideOutFadeIn(contentArray,id);
+		transistionSlideOutFadeIn(content,id);
 	});
 	
 }
@@ -134,28 +149,32 @@ function osColorFunct(id,tempContainer){
 	console.log("Returning Recent Container");
 	return tempContainer;
 }
-function transistionSlideOutFadeIn(contentArray,id) {
-		console.log("Creating Content");
+function transistionSlideOutFadeIn(content,id) {
 		var newDynContainer = $("<div></div>").addClass("sub_container");
-		contentArray.forEach(function(contentArray){
+		content.forEach(function(content){
 			if(id >= 3){
 				newDynContainer.width("75%");
-				var tempContainer = $("<div onclick='osSelect("+id+")'></div>");
+				var tempContainer = $("<div onclick='osSelect("+id+")' id = "+id+"></div>");
 			}
 			else{
 				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
 			}
 			tempContainer.addClass("item_container");
 			osColorFunct(id,tempContainer);
-			tempContainer.append(contentArray);
+			tempContainer.append(content);
 			newDynContainer.append(tempContainer);
 			id++;
 		});
-		if(id == 3){} else{
+		if(id == 3){}
+		else{
 			var back_btn_container = $("<div></div>").addClass("back_btn_container");
 			var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
+			if(id == 13){
+				var continue_btn = $("<div onclick='continue()'> Continue </div>").addClass("back_btn");
+				back_btn_container.append(back_btn,continue_btn);
+			}
+			else{back_btn_container.append(back_btn);}
 			id++;
-			back_btn_container.append(back_btn);
 			newDynContainer.append(back_btn_container);
 		}
 		
