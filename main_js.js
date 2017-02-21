@@ -38,26 +38,38 @@ function continueFunct(){
 }
 
 function btnOptions(id){
+	var estTotal;
 	switch(id){
 		case 3:addBreadCrumb("Windows > ");problemPage(1);break;
 		case 4:addBreadCrumb("MacOS > ");problemPage(1);break;
 		case 5:addBreadCrumb("Chrome OS > ");problemPage(1);break;
-		case 7:var tag = $("#7");selToggle(tag);break;
-		case 8:var tag = $("#8");selToggle(tag);break;
-		case 9:var tag = $("#9");selToggle(tag);break;
-		case 10:var tag = $("#10");selToggle(tag);break;
-		case 11:var tag = $("#11");selToggle(tag);break;
-		case 12:var tag = $("#12");selToggle(tag);break;
+		case 7:var tag = $("#7");
+		estTotal =+ $49.99*selToggle(tag);break;
+		case 8:var tag = $("#8");
+		estTotal =+ $99.99*selToggle(tag);break;
+		case 9:var tag = $("#9");
+		estTotal =+ $39.99*selToggle(tag);break;
+		case 10:var tag = $("#10");
+		estTotal =+ $29.99*selToggle(tag);break;
+		case 11:var tag = $("#11");
+		estTotal =+ $59.99*selToggle(tag);break;
+		case 12:var tag = $("#12");
+		selToggle(tag);break;
 	}
+	addBreadCrumb(estTotal);
 }
 
 function selToggle(tag){
+	var active;
 	if(tag.attr('class') == 'item_container item_container_selected'){
 		tag.removeClass("item_container_selected");
+		active = 0;
 	}
 	else{
 		tag.addClass("item_container_selected");
+		active = 1;
 	}
+	return active;
 }
 
 function backBtnClick(id){
