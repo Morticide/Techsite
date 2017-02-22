@@ -4,15 +4,37 @@ $(document).ready(function(){
 	
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
-	var estTotal =[];
-	estTotal[0][1] = 39.99;
-	estTotal[1][1] = 99.99;
-	estTotal[2][1] = 39.99;
-	estTotal[3][1] = 29.99;
-	estTotal[4][1] = 49.99;
+	var priceD = 39.99;
+	var priceV = 99.99;
+	var priceT = 39.99;
+	var priceS = 29.99;
+	var priceH = 49.99;
 });
 
-
+function estTotal(){
+	var activeItems = continueFunct(0);
+	var price = [];
+	price.push(39.99);
+	price.push(99.99);
+	price.push(39.99);
+	price.push(29.99);
+	price.push(49.99);
+	
+	var total = 0;
+	console.log(total);
+	total += price[0] * activeItems[0] ;
+	console.log(this.priceD);
+	console.log(total);
+	total += price[1] * activeItems[1];
+	console.log(total);
+	total += price[2] * activeItems[2];
+	console.log(total);
+	total += price[3] * activeItems[3];
+	console.log(total);
+	total += price[4] * activeItems[4];
+	console.log(total);
+	$(".bread_crumb").last().text('Estimate: $ '+total);
+}
 
 function homePageFunct(id){
 	
@@ -30,58 +52,72 @@ function homePageFunct(id){
 	}
 }
 
-function continueFunct(){
+function continueFunct(use){
 	var i;
 	var slctOptions = [];
+	var activeItems = [];
 	for(i = 7; i <= 12; i++){
 		var temp = $('#'+i);
 		console.log("running through for loop");
 		if(temp.attr('class') == "item_container item_container_selected"){
 			console.log(temp.text());
 			slctOptions.push(temp.text());
+			activeItems.push(1);
+		}
+		else{
+			activeItems.push(0);
 		}
 	}
-	removeContents(3,slctOptions,1);
+	if(use == 1){
+		removeContents(3,slctOptions,1);
+	}
+	else{return activeItems;}
 }
 
 function btnOptions(id){
+	var tag;
 	switch(id){
 		case 3:addBreadCrumb("Windows > ");problemPage(1);break;
 		case 4:addBreadCrumb("MacOS > ");problemPage(1);break;
 		case 5:addBreadCrumb("Chrome OS > ");problemPage(1);break;
-		case 7:var tag = $("#7");
-		this.estTotal[1][0] = selToggle(tag);break;
-		case 8:var tag = $("#8");
-		this.estTotal[2][0] = selToggle(tag);break;
-		case 9:var tag = $("#9");
-		this.estTotal[3][0] = selToggle(tag);break;
-		case 10:var tag = $("#10");
-		this.estTotal[4][0] = selToggle(tag);break;
-		case 11:var tag = $("#11");
-		this.estTotal[5][0] = selToggle(tag);break;
-		case 12:var tag = $("#12");
-		selToggle(tag);break;
+		case 7:tag = $("#7");
+			this.slctOptsD  = selToggle(tag);
+			estTotal();
+			break;
+		case 8:tag = $("#8");
+			this.slctOptsV  = selToggle(tag);
+			estTotal();
+			break;
+		case 9:tag = $("#9");
+			this.slctOptsT  = selToggle(tag);
+			estTotal();
+			break;
+		case 10:tag = $("#10");
+			this.slctOptsS  = selToggle(tag);
+			estTotal();
+			break;
+		case 11:tag = $("#11");
+			this.slctOptsH  = selToggle(tag);
+			estTotal();
+			break;
+		case 12:tag = $("#12");
+			selToggle(tag);
+			break;
 	}
-	var total, i = 0;
-		for(i = 0; i <= 5; i++){
-			total += this.estTotal[i][0]*this.estTotal[i][1];	
-		}
-		addBreadCrumb("$" +total);
 }
 
 function selToggle(tag){
 	var active;
 	if(tag.attr('class') == 'item_container item_container_selected'){
 		tag.removeClass("item_container_selected");
-		$(".bread_crumb").last().remove();
 		active = 0;
+		return active;
 	}
 	else{
 		tag.addClass("item_container_selected");
 		active = 1;
-		$(".bread_crumb").last().fadeOut();
+		return active;
 	}
-	return active;
 }
 
 function backBtnClick(id){
@@ -116,6 +152,7 @@ function problemPage(action){
 	var newElements = ["Diagnostics","Virus Removal","Tune Up", "Software Install","Hardware Install","Other"];
 	if(action == 1){removeContents(newElements,7,1);}
 	else if(action == 2){removeContents(newElements,7,2);}
+	addBreadCrumb('$ 0');
 }
 
 function drawClientPage(slctOptions){
@@ -208,7 +245,7 @@ function transistionSlideOutFadeIn(content,id) {
 			var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
 			if(id == 13){
 				id++;
-				var continue_btn = $("<div id = "+id+" onclick='continueFunct()'> Continue </div>").addClass("back_btn");
+				var continue_btn = $("<div id = "+id+" onclick='continueFunct(1)'> Continue </div>").addClass("back_btn");
 				back_btn_container.append(back_btn,continue_btn);
 			}
 			else{back_btn_container.append(back_btn);}
