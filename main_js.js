@@ -4,8 +4,15 @@ $(document).ready(function(){
 	
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
-	
+	var estTotal =[];
+	estTotal[0][1] = 39.99;
+	estTotal[1][1] = 99.99;
+	estTotal[2][1] = 39.99;
+	estTotal[3][1] = 29.99;
+	estTotal[4][1] = 49.99;
 });
+
+
 
 function homePageFunct(id){
 	
@@ -38,36 +45,41 @@ function continueFunct(){
 }
 
 function btnOptions(id){
-	var estTotal;
 	switch(id){
 		case 3:addBreadCrumb("Windows > ");problemPage(1);break;
 		case 4:addBreadCrumb("MacOS > ");problemPage(1);break;
 		case 5:addBreadCrumb("Chrome OS > ");problemPage(1);break;
 		case 7:var tag = $("#7");
-		estTotal =+ $49.99*selToggle(tag);break;
+		this.estTotal[1][0] = selToggle(tag);break;
 		case 8:var tag = $("#8");
-		estTotal =+ $99.99*selToggle(tag);break;
+		this.estTotal[2][0] = selToggle(tag);break;
 		case 9:var tag = $("#9");
-		estTotal =+ $39.99*selToggle(tag);break;
+		this.estTotal[3][0] = selToggle(tag);break;
 		case 10:var tag = $("#10");
-		estTotal =+ $29.99*selToggle(tag);break;
+		this.estTotal[4][0] = selToggle(tag);break;
 		case 11:var tag = $("#11");
-		estTotal =+ $59.99*selToggle(tag);break;
+		this.estTotal[5][0] = selToggle(tag);break;
 		case 12:var tag = $("#12");
 		selToggle(tag);break;
 	}
-	addBreadCrumb(estTotal);
+	var total, i = 0;
+		for(i = 0; i <= 5; i++){
+			total += this.estTotal[i][0]*this.estTotal[i][1];	
+		}
+		addBreadCrumb("$" +total);
 }
 
 function selToggle(tag){
 	var active;
 	if(tag.attr('class') == 'item_container item_container_selected'){
 		tag.removeClass("item_container_selected");
+		$(".bread_crumb").last().remove();
 		active = 0;
 	}
 	else{
 		tag.addClass("item_container_selected");
 		active = 1;
+		$(".bread_crumb").last().fadeOut();
 	}
 	return active;
 }
@@ -207,5 +219,4 @@ function transistionSlideOutFadeIn(content,id) {
 		newDynContainer.hide();
 		newDynContainer.fadeIn(300);
 		$(".main_container").append(newDynContainer);
-		
-	} 
+}
