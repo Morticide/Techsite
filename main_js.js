@@ -21,18 +21,13 @@ function estTotal(){
 	price.push(49.99);
 	
 	var total = 0;
-	console.log(total);
+	
 	total += price[0] * activeItems[0] ;
-	console.log(this.priceD);
-	console.log(total);
 	total += price[1] * activeItems[1];
-	console.log(total);
 	total += price[2] * activeItems[2];
-	console.log(total);
 	total += price[3] * activeItems[3];
-	console.log(total);
 	total += price[4] * activeItems[4];
-	console.log(total);
+	
 	$(".bread_crumb").last().text('Estimate: $ '+total);
 }
 
@@ -58,9 +53,8 @@ function continueFunct(use){
 	var activeItems = [];
 	for(i = 7; i <= 12; i++){
 		var temp = $('#'+i);
-		console.log("running through for loop");
 		if(temp.attr('class') == "item_container item_container_selected"){
-			console.log(temp.text());
+			
 			slctOptions.push(temp.text());
 			activeItems.push(1);
 		}
@@ -76,7 +70,7 @@ function continueFunct(use){
 
 function btnOptions(id){
 	var tag;
-	switch(id){
+		switch(id){
 		case 3:addBreadCrumb("Windows > ");problemPage(1);break;
 		case 4:addBreadCrumb("MacOS > ");problemPage(1);break;
 		case 5:addBreadCrumb("Chrome OS > ");problemPage(1);break;
@@ -103,7 +97,7 @@ function btnOptions(id){
 		case 12:tag = $("#12");
 			selToggle(tag);
 			break;
-	}
+		}
 }
 
 function selToggle(tag){
@@ -139,31 +133,41 @@ function backBtnClick(id){
 			var contentArray = [winImage,macImage,chrImage];
 			$(".bread_crumb").last().fadeOut(600,'swing').promise().done(function(){
 				$(".bread_crumb").last().remove();
+				$(".bread_crumb").last().fadeOut(600,'swing').promise().done(function(){
+					$(".bread_crumb").last().remove();
+				});
 			});
+			
 			removeContents(contentArray,3,2);
 			break;
 		default:
-			problemPage(2);
+			$(".bread_crumb").last().promise().done(function(){
+				$(".bread_crumb").last().remove();
+					problemPage(2);
+			});
+			
 			break;
 	}
 }
 
 function problemPage(action){
-	var newElements = ["Diagnostics","Virus Removal","Tune Up", "Software Install","Hardware Install","Other"];
+	var newElements = ["Diagnostics","Virus Removal","Password Reset", "Software Install","Hardware Install","Other"];
 	if(action == 1){removeContents(newElements,7,1);}
 	else if(action == 2){removeContents(newElements,7,2);}
-	addBreadCrumb('$ 0');
+	addBreadCrumb('Estimate: $ 0');
 }
 
 function drawClientPage(slctOptions){
 	var form = $("<form></form>");
-	var firstNameLab = $("<label for='firstname'>Last Name</label>");
+	var firstNameLab = $("<label for='firstname'>First Name</label>");
 	var firstName = $("<input type='text' name = 'firstname'>");
-	var firstField = [firstNameLab,firstName];
 	var lastNameLab = $("<label for='lastname'>Last Name</label>");
 	var lastName = $("<input type='text' mame = 'lastname'>");
-	var secondField = [lastNameLab,lastName];
-	var newElements = [firstField,secondField];
+	var emailLab = $("<label for='email'>Email</label>");
+	var email = $("<input type='text' mame = 'email'>");
+	var addressLab = $("<label for='address'>Address</label>");
+	var address = $("<input type='text' mame = 'address'>");
+	var newElements = [firstNameLab,firstName,lastNameLab,lastName,emailLab,email,addressLab,address];
 	slctOptions.forEach(function(slctOptions){
 		var repairOpt = $("<div></div>");
 		repairOpt.addClass("input");
@@ -220,7 +224,7 @@ function osColorFunct(id,tempContainer){
 function transistionSlideOutFadeIn(content,id) {
 		var newDynContainer = $("<div></div>").addClass("sub_container");
 		content.forEach(function(content){
-			if(id >= 3){
+			if(id >= 3 && id <= 14){
 				newDynContainer.width("75%");
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 				tempContainer.addClass("item_container");
@@ -228,7 +232,12 @@ function transistionSlideOutFadeIn(content,id) {
 			else if (id >= 15){
 				newDynContainer.width("75%");
 				var tempContainer = $("<div id="+id+"></div>");
-				tempContainer.addClass("input");
+				if(id%2 == 0 && id <=22){
+					tempContainer.addClass("input_text");
+				}
+				else{
+					tempContainer.addClass("input");
+				}
 			}
 			else{
 				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");

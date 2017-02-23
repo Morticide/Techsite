@@ -33,7 +33,21 @@ body{
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 .input{
-	color:red;
+	color:white;
+	font-size: 20px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	margin:10px;
+	text-align: center;
+	display:inline-block;
+}
+.input_text{
+	display:inline-block;
+	height: 20px;
+}
+input[type="text"]{
+	height: 30px;
+	font-size: 20px;
+	width:200px;
 }
 .item_container{
 	background-color: rgba(67, 0, 90, 0.53);
@@ -59,7 +73,7 @@ body{
 	background-color: rgba(0, 37, 90, 0.70);
 }
 .main_container{
-	margin: 10% auto auto auto;
+	margin: 5% auto auto auto;
 	text-align: center;
 }
 .sub_container{
