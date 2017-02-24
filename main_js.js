@@ -4,11 +4,6 @@ $(document).ready(function(){
 	
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
-	var priceD = 39.99;
-	var priceV = 99.99;
-	var priceT = 39.99;
-	var priceS = 29.99;
-	var priceH = 49.99;
 });
 
 function estTotal(){
@@ -22,11 +17,17 @@ function estTotal(){
 	
 	var total = 0;
 	
+	
+	
 	total += price[0] * activeItems[0] ;
 	total += price[1] * activeItems[1];
 	total += price[2] * activeItems[2];
 	total += price[3] * activeItems[3];
 	total += price[4] * activeItems[4];
+	
+	if(activeItems[1] == 1){
+		total -= 24;
+	}
 	
 	$(".bread_crumb").last().text('Estimate: $ '+total);
 }
@@ -54,7 +55,6 @@ function continueFunct(use){
 	for(i = 7; i <= 12; i++){
 		var temp = $('#'+i);
 		if(temp.attr('class') == "item_container item_container_selected"){
-			
 			slctOptions.push(temp.text());
 			activeItems.push(1);
 		}
@@ -75,23 +75,24 @@ function btnOptions(id){
 		case 4:addBreadCrumb("MacOS > ");problemPage(1);break;
 		case 5:addBreadCrumb("Chrome OS > ");problemPage(1);break;
 		case 7:tag = $("#7");
-			this.slctOptsD  = selToggle(tag);
+			selToggle(tag);
 			estTotal();
 			break;
 		case 8:tag = $("#8");
-			this.slctOptsV  = selToggle(tag);
+			selToggle(tag);
+			selToggle('#7');
 			estTotal();
 			break;
 		case 9:tag = $("#9");
-			this.slctOptsT  = selToggle(tag);
+			selToggle(tag);
 			estTotal();
 			break;
 		case 10:tag = $("#10");
-			this.slctOptsS  = selToggle(tag);
+			selToggle(tag);
 			estTotal();
 			break;
 		case 11:tag = $("#11");
-			this.slctOptsH  = selToggle(tag);
+			selToggle(tag);
 			estTotal();
 			break;
 		case 12:tag = $("#12");
