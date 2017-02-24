@@ -25,10 +25,10 @@ function estTotal(){
 	total += price[3] * activeItems[3];
 	total += price[4] * activeItems[4];
 	
-	if(activeItems[1] == 1){
+	if(activeItems[1] == 1 && activeItems[0] == 1){
 		total -= 24;
 	}
-	
+	total = Math.round(total * 100) / 100;
 	$(".bread_crumb").last().text('Estimate: $ '+total);
 }
 
@@ -80,7 +80,7 @@ function btnOptions(id){
 			break;
 		case 8:tag = $("#8");
 			selToggle(tag);
-			selToggle('#7');
+			selToggle($("#7"));
 			estTotal();
 			break;
 		case 9:tag = $("#9");
