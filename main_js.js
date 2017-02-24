@@ -80,7 +80,7 @@ function btnOptions(id){
 			break;
 		case 8:tag = $("#8");
 			selToggle(tag);
-			selToggle($("#7"));
+			if(selToggle($("#7")) == 0){selToggle($("#7"));}
 			estTotal();
 			break;
 		case 9:tag = $("#9");
@@ -105,13 +105,11 @@ function selToggle(tag){
 	var active;
 	if(tag.attr('class') == 'item_container item_container_selected'){
 		tag.removeClass("item_container_selected");
-		active = 0;
-		return active;
+		return 0;
 	}
 	else{
 		tag.addClass("item_container_selected");
-		active = 1;
-		return active;
+		return 1;
 	}
 }
 
