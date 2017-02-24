@@ -9,7 +9,7 @@ $(document).ready(function(){
 function estTotal(){
 	var activeItems = continueFunct(0);
 	var price = [];
-	price.push(39.99);
+	price.push(69.99);
 	price.push(99.99);
 	price.push(39.99);
 	price.push(29.99);
