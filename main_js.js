@@ -16,9 +16,6 @@ function estTotal(){
 	price.push(49.99);
 	
 	var total = 0;
-	
-	
-	
 	total += price[0] * activeItems[0] ;
 	total += price[1] * activeItems[1];
 	total += price[2] * activeItems[2];
@@ -76,29 +73,25 @@ function btnOptions(id){
 		case 5:addBreadCrumb("Chrome OS > ");problemPage(1);break;
 		case 7:tag = $("#7");
 			selToggle(tag);
-			estTotal();
 			break;
 		case 8:tag = $("#8");
 			selToggle(tag);
 			if(selToggle($("#7")) == 0){selToggle($("#7"));}
-			estTotal();
 			break;
 		case 9:tag = $("#9");
 			selToggle(tag);
-			estTotal();
 			break;
 		case 10:tag = $("#10");
 			selToggle(tag);
-			estTotal();
 			break;
 		case 11:tag = $("#11");
 			selToggle(tag);
-			estTotal();
 			break;
 		case 12:tag = $("#12");
 			selToggle(tag);
 			break;
 		}
+		estTotal();
 }
 
 function selToggle(tag){
