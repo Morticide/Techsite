@@ -128,7 +128,6 @@ function backBtnClick(id){
 					$(".bread_crumb").last().remove();
 				});
 			});
-			
 			removeContents(contentArray,3,2);
 			break;
 		default:
@@ -136,7 +135,6 @@ function backBtnClick(id){
 				$(".bread_crumb").last().remove();
 					problemPage(2);
 			});
-			
 			break;
 	}
 }
@@ -152,10 +150,10 @@ function drawClientPage(slctOptions){
 	
 	var formTable = $("<table></table>");
 	
-	var firstRow = $("<tr></tr>");
-	var secondRow = $("<tr></tr>");
-	var thirdRow = $("<tr></tr>");
-	var fourthRow = $("<tr></tr>");
+	var firstRow = $("<tr></tr>").addClass("input_row");
+	var secondRow = $("<tr></tr>").addClass("input_row");
+	var thirdRow = $("<tr></tr>").addClass("input_row");
+	var fourthRow = $("<tr></tr>").addClass("input_row");
 	
 	var firstNameLab = $("<th><label for='firstname'>First Name</label></th>");
 	var firstName = $("<th><input type='text' name = 'firstname'></th>");
@@ -189,7 +187,21 @@ function drawClientPage(slctOptions){
 		var repairOpt = $("<th><div></div></th>");
 		repairOpt.addClass("input");
 		repairOpt.append(slctOptions);
+		repairOpt.addClass("input_label");
 		fifthRow.append(repairOpt);
+	});
+	
+	var total = estTotal();
+	firstRow.append(total);
+	
+	var labels = [firstNameLab,lastNameLab,emailLab,addressLab,cityLab,zipLab,dateLab];
+	var inputText = [firstName,lastName,email,address,city,zip,date];
+	
+	labels.forEach(function(labels){
+		labels.addClass("input_label");
+	});
+	inputText.forEach(function(inputText){
+		inputText.addClass("input_label");
 	});
 	
 	formTable.append(firstRow,secondRow,thirdRow,fourthRow,fifthRow);
@@ -242,10 +254,10 @@ function osColorFunct(id,tempContainer){
 }
 function transistionSlideOutFadeIn(content,id) {
 		var newDynContainer = $("<div></div>").addClass("sub_container");
-		console.log(content);
 		
 		if (id >= 15){
 				newDynContainer.width("75%");
+				newDynContainer.css('background-color','rgba(7,3,36,.85');
 				newDynContainer.append(content);
 		}
 		else{
@@ -266,6 +278,8 @@ function transistionSlideOutFadeIn(content,id) {
 			newDynContainer.append(tempContainer);
 			id++;
 		});
+		
+		}
 			if(id == 3){}
 			else{
 				var back_btn_container = $("<div></div>").addClass("back_btn_container");
@@ -279,7 +293,6 @@ function transistionSlideOutFadeIn(content,id) {
 				id++;
 				newDynContainer.append(back_btn_container);
 			}
-		}
 		
 		
 		newDynContainer.hide();
