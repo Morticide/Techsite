@@ -16,12 +16,11 @@ function estTotal(){
 	price.push(49.99);
 	
 	var total = 0;
-	total += price[0] * activeItems[0] ;
-	total += price[1] * activeItems[1];
-	total += price[2] * activeItems[2];
-	total += price[3] * activeItems[3];
-	total += price[4] * activeItems[4];
-	
+	var i = 0;
+	price.forEach(function(){
+		total += price[i] * activeItems[i];
+		i++;
+	});
 	if(activeItems[1] == 1 && activeItems[0] == 1){
 		total -= 24;
 	}
