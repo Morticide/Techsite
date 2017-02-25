@@ -149,23 +149,51 @@ function problemPage(action){
 }
 
 function drawClientPage(slctOptions){
-	var form = $("<form></form>");
-	var firstNameLab = $("<label for='firstname'>First Name</label>");
-	var firstName = $("<input type='text' name = 'firstname'>");
-	var lastNameLab = $("<label for='lastname'>Last Name</label>");
-	var lastName = $("<input type='text' mame = 'lastname'>");
-	var emailLab = $("<label for='email'>Email</label>");
-	var email = $("<input type='text' mame = 'email'>");
-	var addressLab = $("<label for='address'>Address</label>");
-	var address = $("<input type='text' mame = 'address'>");
-	var newElements = [firstNameLab,firstName,lastNameLab,lastName,emailLab,email,addressLab,address];
+	
+	var formTable = $("<table></table>");
+	
+	var firstRow = $("<tr></tr>");
+	var secondRow = $("<tr></tr>");
+	var thirdRow = $("<tr></tr>");
+	var fourthRow = $("<tr></tr>");
+	
+	var firstNameLab = $("<th><label for='firstname'>First Name</label></th>");
+	var firstName = $("<th><input type='text' name = 'firstname'></th>");
+	var lastNameLab = $("<th><label for='lastname'>Last Name</label></th>");
+	var lastName = $("<th><input type='text' mame = 'lastname'></th>");
+	
+	firstRow.append(firstNameLab,firstName,lastNameLab,lastName);
+	
+	var emailLab = $("<th><label for='email'>Email</label></th>");
+	var email = $("<th><input type='text' mame = 'email'></th>");
+	var addressLab = $("<th><label for='address'>Address</label></th>");
+	var address = $("<th><input type='text' mame = 'address'></th>");
+	
+	secondRow.append(emailLab,email,addressLab,address);
+	
+	var cityLab = $("<th><label for='city'>City</label></th>");
+	var city = $("<th><input type='text' mame = 'city'></th>");
+	var zipLab = $("<th><label for='address'>Zip</label></th>");
+	var zip = $("<th><input type='text' mame = 'zip'></th>");
+	
+	thirdRow.append(cityLab,city,zipLab,zip);
+	
+	var dateLab = $("<th><label for='address'>Scedule a visit date</label></th>");
+	var date = $("<th><input type='date' name='schDate'></th>");
+	
+	fourthRow.append(dateLab,date);
+	
+	var fifthRow = $("<tr></tr>");
+	
 	slctOptions.forEach(function(slctOptions){
-		var repairOpt = $("<div></div>");
+		var repairOpt = $("<th><div></div></th>");
 		repairOpt.addClass("input");
 		repairOpt.append(slctOptions);
-		newElements.push(repairOpt);
+		fifthRow.append(repairOpt);
 	});
-	transistionSlideOutFadeIn(newElements,15);
+	
+	formTable.append(firstRow,secondRow,thirdRow,fourthRow,fifthRow);
+	transistionSlideOutFadeIn(formTable,15);
 }
 
 function addBreadCrumb(breadCrumbText){
@@ -214,44 +242,45 @@ function osColorFunct(id,tempContainer){
 }
 function transistionSlideOutFadeIn(content,id) {
 		var newDynContainer = $("<div></div>").addClass("sub_container");
-		content.forEach(function(content){
+		console.log(content);
+		
+		if (id >= 15){
+				newDynContainer.width("75%");
+				newDynContainer.append(content);
+		}
+		else{
+			content.forEach(function(content){
 			if(id >= 3 && id <= 14){
 				newDynContainer.width("75%");
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 				tempContainer.addClass("item_container");
+				tempContainer.append(content);
 			}
-			else if (id >= 15){
-				newDynContainer.width("75%");
-				var tempContainer = $("<div id="+id+"></div>");
-				if(id%2 == 0 && id <=22){
-					tempContainer.addClass("input_text");
-				}
-				else{
-					tempContainer.addClass("input");
-				}
-			}
+			
 			else{
 				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
 				tempContainer.addClass("item_container");
+				tempContainer.append(content);
 			}
 			osColorFunct(id,tempContainer);
-			tempContainer.append(content);
 			newDynContainer.append(tempContainer);
 			id++;
 		});
-		if(id == 3){}
-		else{
-			var back_btn_container = $("<div></div>").addClass("back_btn_container");
-			var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
-			if(id == 13){
+			if(id == 3){}
+			else{
+				var back_btn_container = $("<div></div>").addClass("back_btn_container");
+				var back_btn = $("<div onclick='backBtnClick("+id+")'> < Go Back </div>").addClass("back_btn");
+				if(id == 13){
+					id++;
+					var continue_btn = $("<div id = "+id+" onclick='continueFunct(1)'> Continue </div>").addClass("back_btn");
+					back_btn_container.append(back_btn,continue_btn);
+				}
+				else{back_btn_container.append(back_btn);}
 				id++;
-				var continue_btn = $("<div id = "+id+" onclick='continueFunct(1)'> Continue </div>").addClass("back_btn");
-				back_btn_container.append(back_btn,continue_btn);
+				newDynContainer.append(back_btn_container);
 			}
-			else{back_btn_container.append(back_btn);}
-			id++;
-			newDynContainer.append(back_btn_container);
 		}
+		
 		
 		newDynContainer.hide();
 		newDynContainer.fadeIn(300);
