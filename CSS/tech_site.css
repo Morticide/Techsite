@@ -1,6 +1,10 @@
 body{
-	background: url("Images/Home_Page_Background.jpg");
+	background: url("Images/Home_Page_Background.jpg") no-repeat center center fixed;
 	margin: 0px;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 .back_btn{
 	margin-top:10%;
@@ -70,7 +74,7 @@ input[type = "text"]{
 	background-color: rgba(0, 37, 90, 0.70);
 }
 .main_container{
-	margin: 5% auto auto auto;
+	margin-top: 5%;
 	text-align: center;
 }
 .sub_container{
@@ -81,7 +85,7 @@ input[type = "text"]{
 .top_progress_bar{
 	background-color: black;
 	height: 75px;
-	margin: 3% 0px auto 0px;
+	margin: 3% 0px 0px 0px;
 	opacity: .7;
 	width: auto;
 }
