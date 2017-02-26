@@ -1,9 +1,6 @@
 body{
 	background: url("Images/Home_Page_Background.jpg") no-repeat center center fixed;
 	margin: 0px;
-  	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
   	background-size: cover;
 }
 .back_btn{
