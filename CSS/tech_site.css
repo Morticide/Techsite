@@ -1,7 +1,8 @@
 body{
-	background: url("Images/Home_Page_Background.jpg") no-repeat center center fixed;
+	/*background: url("Images/Home_Page_Background.jpg") no-repeat;*/
+	/*background-size: cover;*/
+	/*width: auto;*/
 	margin: 0px;
-  	background-size: cover;
 }
 .back_btn{
 	margin-top:10%;
@@ -71,7 +72,7 @@ input[type = "text"]{
 	background-color: rgba(0, 37, 90, 0.70);
 }
 .main_container{
-	margin-top: 5%;
+	margin-top: 5% auto auto auto;
 	text-align: center;
 }
 .sub_container{
