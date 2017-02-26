@@ -26,6 +26,7 @@ function estTotal(){
 	}
 	total = Math.round(total * 100) / 100;
 	$(".bread_crumb").last().text('Estimate: $ '+total);
+	return total;
 }
 
 function homePageFunct(id){
@@ -151,35 +152,50 @@ function drawClientPage(slctOptions){
 	var formTable = $("<table></table>");
 	
 	var firstRow = $("<tr></tr>").addClass("input_row");
+		var firstInput = $("<div></div>").addClass("input_pair");
+		var secondInput = $("<div></div>").addClass("input_pair");
 	var secondRow = $("<tr></tr>").addClass("input_row");
+		var thirdInput = $("<div></div>").addClass("input_pair");
+		var fourthInput = $("<div></div>").addClass("input_pair");
 	var thirdRow = $("<tr></tr>").addClass("input_row");
+		var fifthInput = $("<div></div>").addClass("input_pair");
+		var sixthInput = $("<div></div>").addClass("input_pair");
 	var fourthRow = $("<tr></tr>").addClass("input_row");
+		var seventhInput = $("<div></div>").addClass("input_pair");
+		var eighthInput = $("<div></div>").addClass("input_pair");
 	
 	var firstNameLab = $("<th><label for='firstname'>First Name</label></th>");
 	var firstName = $("<th><input type='text' name = 'firstname'></th>");
 	var lastNameLab = $("<th><label for='lastname'>Last Name</label></th>");
 	var lastName = $("<th><input type='text' mame = 'lastname'></th>");
 	
-	firstRow.append(firstNameLab,firstName,lastNameLab,lastName);
+	firstInput.append(firstNameLab,firstName);
+	secondInput.append(lastNameLab,lastName);
+	firstRow.append(firstInput,secondInput);
 	
 	var emailLab = $("<th><label for='email'>Email</label></th>");
 	var email = $("<th><input type='text' mame = 'email'></th>");
 	var addressLab = $("<th><label for='address'>Address</label></th>");
 	var address = $("<th><input type='text' mame = 'address'></th>");
 	
-	secondRow.append(emailLab,email,addressLab,address);
+	thirdInput.append(emailLab,email);
+	fourthInput.append(addressLab,address);
+	secondRow.append(thirdInput,fourthInput);
 	
 	var cityLab = $("<th><label for='city'>City</label></th>");
 	var city = $("<th><input type='text' mame = 'city'></th>");
 	var zipLab = $("<th><label for='address'>Zip</label></th>");
 	var zip = $("<th><input type='text' mame = 'zip'></th>");
 	
-	thirdRow.append(cityLab,city,zipLab,zip);
+	fifthInput.append(cityLab,city);
+	sixthInput.append(zipLab,zip);
+	thirdRow.append(fifthInput,sixthInput);
 	
 	var dateLab = $("<th><label for='address'>Scedule a visit date</label></th>");
 	var date = $("<th><input type='date' name='schDate'></th>");
-	
-	fourthRow.append(dateLab,date);
+
+	seventhInput.append(dateLab,date);
+	fourthRow.append(seventhInput);
 	
 	var fifthRow = $("<tr></tr>");
 	
@@ -192,7 +208,8 @@ function drawClientPage(slctOptions){
 	});
 	
 	var total = estTotal();
-	firstRow.append(total);
+	console.log(total);
+	fifthRow.append(total);
 	
 	var labels = [firstNameLab,lastNameLab,emailLab,addressLab,cityLab,zipLab,dateLab];
 	var inputText = [firstName,lastName,email,address,city,zip,date];

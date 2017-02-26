@@ -5,6 +5,7 @@ body{
   	-moz-background-size: cover;
   	-o-background-size: cover;
 	margin: 0px;
+	height: auto;
 }
 .back_btn{
 	margin-top:10%;
@@ -42,6 +43,9 @@ body{
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	display: inline-block;
 	width: 200px;
+}
+.input_pair{
+	display: inline-block;
 }
 .input_row{
 	margin:30px;
