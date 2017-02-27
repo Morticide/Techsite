@@ -29,6 +29,9 @@ body{
 	background-color: rgba(0, 37, 90, 0.45);
 	border: 1px solid rgba(255, 255, 255, 0.79);
 }
+.bullet_point{
+	margin:13px;
+}
 .bread_crumb{
 	display:inline-block;
 	margin:20px;
@@ -36,6 +39,18 @@ body{
 	color: white;
 	font-size: 25px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+.help_box{
+	text-align: left;
+	position: absolute;
+	background-color:rgba(12, 13, 75, 0.95);
+	font-size: 23px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	color: white;
+	right: 13%;
+	width:75%;
+	height:75%;
+	z-index: 1;
 }
 .input_label{
 	color:white;
@@ -78,10 +93,10 @@ input[type = "text"]{
 	background-color: rgba(5, 6, 54, 0.60);
 }
 .item_container_selected{
-	background-color: rgba(5, 6, 54, 0.90);
+	background-color: rgba(81, 134, 238, 0.90);
 }
 .item_container_selected:hover{
-	background-color: rgba(5, 6, 54, 0.90);
+	background-color: rgba(81, 134, 238, 0.90);
 }
 .main_container{
 	margin-top: 5%;
@@ -105,6 +120,7 @@ input[type = "text"]{
 	margin-left:3%;
 }
 .sub_container{
+	position: relative;
 	text-align:center;
 	margin:auto;
 	width: 20%;
@@ -125,7 +141,6 @@ input[type = "text"]{
     height: 0;
     border: solid 25px;
     border-color: transparent white white transparent;
-    text-align: right;
 }
 .triangle:hover{
 	position: absolute;
@@ -135,4 +150,8 @@ input[type = "text"]{
     height: 0;
     border: solid 25px;
     border-color: transparent #1162ff #1162ff transparent;
+}
+.triangle_text{
+	position: relative;
+	width:20px;
 }

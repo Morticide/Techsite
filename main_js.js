@@ -49,6 +49,7 @@ function continueFunct(use){
 	var i;
 	var slctOptions = [];
 	var activeItems = [];
+	
 	for(i = 7; i <= 12; i++){
 		var temp = $('#'+i);
 		if(temp.attr('class') == "item_container item_container_selected"){
@@ -59,7 +60,9 @@ function continueFunct(use){
 			activeItems.push(0);
 		}
 	}
+	
 	slctOptions.push($(".bread_crumb").last().text());
+	
 	if(use == 1){
 		removeContents(3,slctOptions,1);
 	}
@@ -93,6 +96,48 @@ function btnOptions(id){
 			break;
 		}
 		estTotal();
+}
+
+function triangleInfo(id){
+	console.log("triangle clicked");
+	var helpBox = $("<div class= 'help_box'></div>");
+	var helpBoxText = $("<ul></ul>");
+	switch(id){
+		case 7:
+			helpBoxText.text("Diagnostics:");
+				helpBoxText.append($("<li>Hardware Diagnostics</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Physical Inspection</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Software Troubleshooting</li>").addClass("bullet_point"));
+				break;
+		case 8:
+			helpBoxText.text("Virus/Malware Removal:");
+				helpBoxText.append($("<li>Malicious program removal</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Startup Optimization</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Temp File Cleanup</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Malicious extension removal</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Windows Updates and AV updates</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Diagnostics service bundling is suggested</li>").addClass("bullet_point"));
+				break;
+		case 9:
+			helpBoxText.text(" Password Reset:");
+				helpBoxText.append($("<li>Local password removal or</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Password recovery help</li>").addClass("bullet_point"));
+				break;
+		case 10:
+			helpBoxText.text(" Software Install:");
+				helpBoxText.append($("<li>Software Installation includes driver installations, software product installation and configuration</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Software Update</li>").addClass("bullet_point"));
+				break;
+		case 11:
+			helpBoxText.text(" Hardware Install:");
+				helpBoxText.append($("<li>Physical installation of hardware</li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Hardware Parts that we install are GPU's, Power Supplies, Storage Drives, DVD drives, Cases/Case Swaps, Fans, Closed Liquid Cooling units </li>").addClass("bullet_point"));
+				helpBoxText.append($("<li>Software Install maybe bundled depending on hardware part</li>").addClass("bullet_point"));
+				break;
+		
+	}
+	helpBox.append(helpBoxText);
+	$("#7").before(helpBox);
 }
 
 function selToggle(tag){
@@ -294,7 +339,7 @@ function transistionSlideOutFadeIn(content,id) {
 				newDynContainer.width("75%");
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 				if(id >= 7 && id <= 11){
-					var tempTriangle = "<div class ='triangle' triangleInfo("+id+")> ?</div>";
+					var tempTriangle = "<div class ='triangle' onclick = triangleInfo("+id+")><div class= 'triangle_text'>?</div></div>";
 					tempContainer.append(tempTriangle);
 				}
 				tempContainer.addClass("item_container");
