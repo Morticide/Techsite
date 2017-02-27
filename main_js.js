@@ -59,6 +59,7 @@ function continueFunct(use){
 			activeItems.push(0);
 		}
 	}
+	slctOptions.push($(".bread_crumb").last().text());
 	if(use == 1){
 		removeContents(3,slctOptions,1);
 	}
@@ -164,55 +165,46 @@ function drawClientPage(slctOptions){
 		var seventhInput = $("<div></div>").addClass("input_pair");
 		var eighthInput = $("<div></div>").addClass("input_pair");
 	
-	var firstNameLab = $("<th><label for='firstname'>First Name</label></th>");
+	var firstNameLab = $("<th><label for='firstname'>First Name:</label></th>");
 	var firstName = $("<th><input type='text' name = 'firstname'></th>");
-	var lastNameLab = $("<th><label for='lastname'>Last Name</label></th>");
+	var lastNameLab = $("<th><label for='lastname'>Last Name:</label></th>");
 	var lastName = $("<th><input type='text' mame = 'lastname'></th>");
 	
 	firstInput.append(firstNameLab,firstName);
 	secondInput.append(lastNameLab,lastName);
 	firstRow.append(firstInput,secondInput);
 	
-	var emailLab = $("<th><label for='email'>Email</label></th>");
+	var emailLab = $("<th><label for='email'>Email:</label></th>");
 	var email = $("<th><input type='text' mame = 'email'></th>");
-	var addressLab = $("<th><label for='address'>Address</label></th>");
+	var addressLab = $("<th><label for='address'>Address:</label></th>");
 	var address = $("<th><input type='text' mame = 'address'></th>");
 	
 	thirdInput.append(emailLab,email);
 	fourthInput.append(addressLab,address);
 	secondRow.append(thirdInput,fourthInput);
 	
-	var cityLab = $("<th><label for='city'>City</label></th>");
+	var cityLab = $("<th><label for='city'>City:</label></th>");
 	var city = $("<th><input type='text' mame = 'city'></th>");
-	var zipLab = $("<th><label for='address'>Zip</label></th>");
+	var zipLab = $("<th><label for='address'>Zip:</label></th>");
 	var zip = $("<th><input type='text' mame = 'zip'></th>");
 	
 	fifthInput.append(cityLab,city);
 	sixthInput.append(zipLab,zip);
 	thirdRow.append(fifthInput,sixthInput);
 	
-	var dateLab = $("<th><label for='address'>Scedule a visit date</label></th>");
+	var dateLab = $("<th><label for='schDate'>Schedule a visit date</label></th>");
 	var date = $("<th><input type='date' name='schDate'></th>");
-
+	
+	var timeLab = $("<th><label for='time'>Pick a Time</label></th>");
+	var time = $("<th><input name='time' type='time'></th>");
+	date.addClass("date_picker");
+	
 	seventhInput.append(dateLab,date);
-	fourthRow.append(seventhInput);
+	eighthInput.append(timeLab,time);
+	fourthRow.append(seventhInput,eighthInput);
 	
-	var fifthRow = $("<tr></tr>");
-	
-	slctOptions.forEach(function(slctOptions){
-		var repairOpt = $("<th><div></div></th>");
-		repairOpt.addClass("input");
-		repairOpt.append(slctOptions);
-		repairOpt.addClass("input_label");
-		fifthRow.append(repairOpt);
-	});
-	
-	var total = estTotal();
-	console.log(total);
-	fifthRow.append(total);
-	
-	var labels = [firstNameLab,lastNameLab,emailLab,addressLab,cityLab,zipLab,dateLab];
-	var inputText = [firstName,lastName,email,address,city,zip,date];
+	var labels = [firstNameLab,lastNameLab,emailLab,addressLab,cityLab,zipLab,dateLab,timeLab];
+	var inputText = [firstName,lastName,email,address,city,zip,date,time];
 	
 	labels.forEach(function(labels){
 		labels.addClass("input_label");
@@ -221,8 +213,29 @@ function drawClientPage(slctOptions){
 		inputText.addClass("input_label");
 	});
 	
-	formTable.append(firstRow,secondRow,thirdRow,fourthRow,fifthRow);
+	var fifthRow = $("<tr class='input_row'></tr>");
+	slctOptions.forEach(function(slctOptions){
+		if(slctOptions == 'Other'){
+		}
+		else{
+			var repairOpt = $("<th></th>");
+			repairOpt.append(slctOptions);
+			repairOpt.addClass("input input_label repair_opts");
+			fifthRow.append(repairOpt);
+		}
+	});
+	if(slctOptions[slctOptions.length-2] == 'Other'){
+		var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below</th></tr>");
+		var textField = $("<tr class = 'input_row' ><th><textarea name = 'other' type='text' rows='4' cols='50' class = 'other_text'></textarea></th></tr>");
+	}
+	
+	
+	formTable.append(firstRow,secondRow,thirdRow,fourthRow,fifthRow,otherExp,textField);
+	
 	transistionSlideOutFadeIn(formTable,15);
+	
+	
+	
 }
 
 function addBreadCrumb(breadCrumbText){
