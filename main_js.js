@@ -176,7 +176,7 @@ function drawClientPage(slctOptions){
 	
 	var emailLab = $("<th><label for='email'>Email:</label></th>");
 	var email = $("<th><input type='text' mame = 'email'></th>");
-	var addressLab = $("<th><label for='address'>Address:</label></th>");
+	var addressLab = $("<th><label for='address'>Home Address:</label></th>");
 	var address = $("<th><input type='text' mame = 'address'></th>");
 	
 	thirdInput.append(emailLab,email);
@@ -228,8 +228,6 @@ function drawClientPage(slctOptions){
 		var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below</th></tr>");
 		var textField = $("<tr class = 'input_row' ><th><textarea name = 'other' type='text' rows='4' cols='50' class = 'other_text'></textarea></th></tr>");
 	}
-	
-	
 	formTable.append(firstRow,secondRow,thirdRow,fourthRow,fifthRow,otherExp,textField);
 	
 	transistionSlideOutFadeIn(formTable,15);
