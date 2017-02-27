@@ -293,6 +293,10 @@ function transistionSlideOutFadeIn(content,id) {
 			if(id >= 3 && id <= 14){
 				newDynContainer.width("75%");
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
+				if(id >= 7 && id <= 11){
+					var tempTriangle = "<div class ='triangle' triangleInfo("+id+")> ?</div>";
+					tempContainer.append(tempTriangle);
+				}
 				tempContainer.addClass("item_container");
 				tempContainer.append(content);
 			}
