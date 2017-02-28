@@ -1,10 +1,16 @@
 /*global $*/
 /*global jQuery*/
 $(document).ready(function(){
-	
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
+
+	$("body").on("mousedown",removeHelp);
 });
+
+function removeHelp(){
+	console.log("attempting removal of help box");
+	$(".help_box").remove();
+}
 
 function estTotal(){
 	var activeItems = continueFunct(0);
@@ -100,7 +106,7 @@ function btnOptions(id){
 
 function triangleInfo(id){
 	console.log("triangle clicked");
-	var helpBox = $("<div class= 'help_box'></div>");
+	var helpBox = $("<div class= 'help_box' onclick = removeHelp()></div>");
 	var helpBoxText = $("<ul></ul>");
 	switch(id){
 		case 7:
