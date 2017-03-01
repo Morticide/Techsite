@@ -92,6 +92,21 @@ input[type = "text"]{
 	cursor: default;
 	background-color: rgba(5, 6, 54, 0.60);
 }
+.item_container_sibling{
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	padding:3%;
+	margin: 3%;
+	position: absolute;
+	border-radius: 5px;
+}
+.item_container_sibling:hover{
+	border: 1px solid rgba(255, 255, 255, 0.60);
+	cursor: default;
+	background-color: rgba(5, 6, 54, 0.60);
+}
 .item_container_selected{
 	background-color: rgba(81, 134, 238, 0.90);
 }

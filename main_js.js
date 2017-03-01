@@ -3,8 +3,6 @@
 $(document).ready(function(){
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
-
-	$("body").on("mousedown",removeHelp);
 });
 
 function removeHelp(){
@@ -76,6 +74,8 @@ function continueFunct(use){
 }
 
 function btnOptions(id){
+	console.log("Service Choice Button Clicked");
+	
 	var tag;
 		switch(id){
 		case 3:addBreadCrumb("Windows > ");problemPage(1);break;
@@ -105,7 +105,8 @@ function btnOptions(id){
 }
 
 function triangleInfo(id){
-	console.log("triangle clicked");
+	console.log("Triangle Clicked");
+	$(document).on("mousedown",removeHelp);
 	var helpBox = $("<div class= 'help_box' onclick = removeHelp()></div>");
 	var helpBoxText = $("<ul></ul>");
 	switch(id){
@@ -143,6 +144,7 @@ function triangleInfo(id){
 		
 	}
 	helpBox.append(helpBoxText);
+	event.stopImmediatePropagation();
 	$("#7").before(helpBox);
 }
 
@@ -346,10 +348,14 @@ function transistionSlideOutFadeIn(content,id) {
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 				if(id >= 7 && id <= 11){
 					var tempTriangle = "<div class ='triangle' onclick = triangleInfo("+id+")><div class= 'triangle_text'>?</div></div>";
+					tempContainer.append(content);
 					tempContainer.append(tempTriangle);
+					tempContainer.addClass("item_container");
 				}
-				tempContainer.addClass("item_container");
-				tempContainer.append(content);
+				else{
+					tempContainer.addClass("item_container");
+					tempContainer.append(content);
+				}
 			}
 			
 			else{
