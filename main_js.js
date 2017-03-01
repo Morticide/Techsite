@@ -57,7 +57,7 @@ function continueFunct(use){
 	for(i = 7; i <= 12; i++){
 		var temp = $('#'+i);
 		if(temp.attr('class') == "item_container item_container_selected"){
-			slctOptions.push(temp.text());
+			slctOptions.push(temp.clone().children().remove().end().text());
 			activeItems.push(1);
 		}
 		else{
@@ -195,7 +195,7 @@ function backBtnClick(id){
 }
 
 function problemPage(action){
-	var newElements = ["Diagnostics","Virus Removal","Password Reset", "Software Install","Hardware Install","Other"];
+	var newElements = ["Diagnostics","Virus Removal","Password Reset", "Software Install","Hardware Install","Not Sure?"];
 	if(action == 1){removeContents(newElements,7,1);}
 	else if(action == 2){removeContents(newElements,7,2);}
 	addBreadCrumb('Estimate: $ 0');
@@ -218,16 +218,16 @@ function drawClientPage(slctOptions){
 		var seventhInput = $("<div></div>").addClass("input_pair");
 		var eighthInput = $("<div></div>").addClass("input_pair");
 	
-	var firstNameLab = $("<th><label for='firstname'>First Name:</label></th>");
+	var firstNameLab = $("<th><label for='firstname'>* First Name:</label></th>");
 	var firstName = $("<th><input type='text' name = 'firstname'></th>");
-	var lastNameLab = $("<th><label for='lastname'>Last Name:</label></th>");
+	var lastNameLab = $("<th><label for='lastname'>* Last Name:</label></th>");
 	var lastName = $("<th><input type='text' mame = 'lastname'></th>");
 	
 	firstInput.append(firstNameLab,firstName);
 	secondInput.append(lastNameLab,lastName);
 	firstRow.append(firstInput,secondInput);
 	
-	var emailLab = $("<th><label for='email'>Email:</label></th>");
+	var emailLab = $("<th><label for='email'>* Email:</label></th>");
 	var email = $("<th><input type='text' mame = 'email'></th>");
 	var addressLab = $("<th><label for='address'>Home Address:</label></th>");
 	var address = $("<th><input type='text' mame = 'address'></th>");
@@ -277,16 +277,11 @@ function drawClientPage(slctOptions){
 			fifthRow.append(repairOpt);
 		}
 	});
-	if(slctOptions[slctOptions.length-2] == 'Other'){
-		var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below</th></tr>");
-		var textField = $("<tr class = 'input_row' ><th><textarea name = 'other' type='text' rows='4' cols='50' class = 'other_text'></textarea></th></tr>");
-	}
+	var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below if applicable</th></tr>");
+	var textField = $("<tr class = 'input_row' ><th><textarea name = 'other' type='text' rows='4' cols='50' class = 'other_text'></textarea></th></tr>");
 	formTable.append(firstRow,secondRow,thirdRow,fourthRow,fifthRow,otherExp,textField);
 	
 	transistionSlideOutFadeIn(formTable,15);
-	
-	
-	
 }
 
 function addBreadCrumb(breadCrumbText){
