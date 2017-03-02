@@ -150,8 +150,6 @@ function triangleInfo(id){
 				helpBoxText.append($("<li>Startup Optimization</li>").addClass("bullet_point"));
 				helpBoxText.append($("<li>Temp File Cleanup</li>").addClass("bullet_point"));
 				helpBoxText.append($("<li>Malicious extension removal</li>").addClass("bullet_point"));
-				helpBoxText.append($("<li>Windows Updates and AV updates</li>").addClass("bullet_point"));
-				helpBoxText.append($("<li>Diagnostics service bundling is suggested</li>").addClass("bullet_point"));
 				break;
 		case 9:
 			helpBoxText.text(" Password Reset:");
@@ -161,12 +159,10 @@ function triangleInfo(id){
 		case 10:
 			helpBoxText.text(" Software Install:");
 				helpBoxText.append($("<li>Software Installation includes driver installations, software product installation and configuration</li>").addClass("bullet_point"));
-				helpBoxText.append($("<li>Software Update</li>").addClass("bullet_point"));
 				break;
 		case 11:
 			helpBoxText.text(" Hardware Install:");
 				helpBoxText.append($("<li>Physical installation of hardware</li>").addClass("bullet_point"));
-				helpBoxText.append($("<li>Hardware Parts that we install are GPU's, Power Supplies, Storage Drives, DVD drives, Cases/Case Swaps, Fans, Closed Liquid Cooling units </li>").addClass("bullet_point"));
 				helpBoxText.append($("<li>Software Install maybe bundled depending on hardware part</li>").addClass("bullet_point"));
 				break;
 		
