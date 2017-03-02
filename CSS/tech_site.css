@@ -126,7 +126,6 @@ img{
 	text-align:center;
 	vertical-align: middle;
 	margin:auto;
-	margin-top: 13%;
 	width: 75%;
 }
 .text-area{
@@ -141,7 +140,7 @@ img{
 .top_progress_bar{
 	background-color: black;
 	height: 75px;
-	margin: 3% 0px 0px 0px;
+	margin: 3% 0px 15% 0px;
 	opacity: .7;
 	width: auto;
 }

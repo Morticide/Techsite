@@ -149,7 +149,6 @@ function triangleInfo(id){
 				helpBoxText.append($("<li>Malicious program removal</li>").addClass("bullet_point"));
 				helpBoxText.append($("<li>Startup Optimization</li>").addClass("bullet_point"));
 				helpBoxText.append($("<li>Temp File Cleanup</li>").addClass("bullet_point"));
-				helpBoxText.append($("<li>Malicious extension removal</li>").addClass("bullet_point"));
 				break;
 		case 9:
 			helpBoxText.text(" Password Reset:");
