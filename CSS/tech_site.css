@@ -6,7 +6,19 @@ body{
   	-o-background-size: cover;
 	margin: 0px;
 	height: auto;
+	
+	min-height: 100%;
+  	min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  	width: 100%;
+
+  	/* Set up positioning */
+  	position: fixed;
+  	top: 0;
+  	left: 0;
 }
+
 .back_btn{
 	margin-top:10%;
 	background-color: rgba(67, 0, 90, 0.53);
@@ -35,7 +47,7 @@ body{
 .bread_crumb{
 	display:inline-block;
 	margin:10px;
-	margin-top: 15px;
+	margin-top: 25px;
 	color: white;
 	font-size: 22px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -132,7 +144,7 @@ body{
 }
 .top_progress_bar{
 	background-color: black;
-	height: 50px;
+	height: 75px;
 	margin: 3% 0px 0px 0px;
 	opacity: .7;
 	width: auto;
