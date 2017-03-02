@@ -124,7 +124,9 @@ img{
 .sub_container{
 	position: relative;
 	text-align:center;
+	vertical-align: middle;
 	margin:auto;
+	margin-top: 13%;
 	width: 75%;
 }
 .text-area{
