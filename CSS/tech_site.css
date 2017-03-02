@@ -11,7 +11,7 @@ img{
 
 .back_btn{
 	margin-top:10%;
-	background-color: rgba(67, 0, 90, 0.53);
+	background-color: rgba(72, 46, 116, 0.53);
 	color: white;
 	font-size: 25px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -96,8 +96,8 @@ img{
 	border: 1px solid rgba(255, 255, 255, 0.72);
 	display:inline-block;
 	width:200px;
-	padding:3%;
-	margin: 3%;
+	padding:1%;
+	margin: 2%;
 	position: relative;
 }
 .item_container:hover{
@@ -106,13 +106,14 @@ img{
 	background-color: rgba(5, 6, 54, 0.60);
 }
 .item_container_selected{
-	background-color: rgba(81, 134, 238, 0.90);
+	background-color: rgba(72, 46, 116, 0.90);
 }
 .item_container_selected:hover{
 	background-color: rgba(81, 134, 238, 0.90);
 }
 .main_container{
-	margin-top: 5%;
+	margin-top: 12%;
+	position:relative;
 	text-align: center;
 }
 
@@ -144,9 +145,6 @@ img{
 	opacity: .0;
 	width: auto;
 }
-.top_progress_bar_show{
-	opacity: .7;
-}
 .triangle{
 	color: black;
 	position: absolute;
@@ -154,15 +152,17 @@ img{
 	right: 0;
 	width: 0;
     height: 0;
-    border: solid 20px;
+    border: solid 15px;
     border-radius: 3px;
     border-color: transparent white white transparent;
 }
 .triangle:hover{
-    border: solid 20px;
+    border: solid 18px;
     border-color: transparent #1162ff #1162ff transparent;
 }
 .triangle_text{
 	position: relative;
-	width:20px;
+	padding-bottom:5px;
+	font-size:22px;
+	width:15px;
 }
