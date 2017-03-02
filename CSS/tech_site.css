@@ -34,10 +34,10 @@ body{
 }
 .bread_crumb{
 	display:inline-block;
-	margin:20px;
-	margin-top:25px;
+	margin:10px;
+	margin-top: 15px;
 	color: white;
-	font-size: 25px;
+	font-size: 22px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 .help_box{
@@ -128,11 +128,11 @@ body{
 	position: relative;
 	text-align:center;
 	margin:auto;
-	width: 20%;
+	width: 75%;
 }
 .top_progress_bar{
 	background-color: black;
-	height: 75px;
+	height: 50px;
 	margin: 3% 0px 0px 0px;
 	opacity: .7;
 	width: auto;
@@ -144,16 +144,12 @@ body{
 	right: 0;
 	width: 0;
     height: 0;
-    border: solid 25px;
+    border: solid 20px;
+    border-radius: 3px;
     border-color: transparent white white transparent;
 }
 .triangle:hover{
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 0;
-    height: 0;
-    border: solid 25px;
+    border: solid 20px;
     border-color: transparent #1162ff #1162ff transparent;
 }
 .triangle_text{
