@@ -230,9 +230,7 @@ function problemPage(action){
 }
 
 function drawClientPage(slctOptions){
-	
-	var formTable = $("<table></table>");
-	
+	var table = $("<div class='table'></div>");
 	var firstRow = $("<tr></tr>").addClass("input_row");
 		var firstInput = $("<div></div>").addClass("input_pair");
 		var secondInput = $("<div></div>").addClass("input_pair");
@@ -249,7 +247,7 @@ function drawClientPage(slctOptions){
 	
 	firstInput.append(firstNameLab,firstName);
 	secondInput.append(lastNameLab,lastName);
-	firstRow.append(firstInput,secondInput);
+	firstRow.append(firstInput);
 	
 	var emailLab = $("<th><label for='email'>* Email:</label></th>");
 	var email = $("<input type='text'  id = 'email'>");
@@ -264,22 +262,21 @@ function drawClientPage(slctOptions){
 		labels.addClass("input_label");
 	});
 	
-	var fifthRow = $("<tr class='input_row'></tr>");
+	var fifthBlock = $("<div class='input_block'></div>");
 	slctOptions.forEach(function(slctOptions){
 		if(slctOptions == 'Not Sure?'){
 		}
 		else{
-			var repairOpt = $("<th></th>");
+			var repairOpt = $("<tr><th></th>,</tr>");
 			repairOpt.append(slctOptions);
 			repairOpt.addClass("input input_label repair_opts");
-			fifthRow.append(repairOpt);
+			fifthBlock.append(repairOpt);
 		}
 	});
 	var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below if applicable</th></tr>");
-	var textField = $("<tr class = 'input_row' ><th><textarea id='textarea' name = 'other' type='text' rows='4' cols='50' class = 'other_text'></textarea></th></tr>");
-	formTable.append(firstRow,secondRow,fifthRow,otherExp,textField);
-	
-	transistionSlideOutFadeIn(formTable,15);
+	var textField = $("<tr class = 'input_row' ><th><textarea id='textarea' name = 'other' type='text' class = 'text_area'></textarea></th></tr>");
+	table.append(firstRow,secondRow,fifthBlock,otherExp,textField);
+	transistionSlideOutFadeIn(table,15);
 }
 
 function addBreadCrumb(breadCrumbText){
