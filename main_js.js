@@ -295,6 +295,7 @@ function removeContents(content,id,action){
 	}
 	else{
 		slideFunct(item,600,'swing',($(window).width()));
+		item.css('position','fixed');
 	}
 	
 	item.promise().done(function(){
