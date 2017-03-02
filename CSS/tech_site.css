@@ -3,8 +3,9 @@ body{
 	
 }
 img{
-	position: absolute;
-	max-width: 100%;
+	position: fixed;
+	width: auto;
+	height:100%;
 	top: 0;
 	left: 0;
 }
@@ -72,7 +73,7 @@ img{
 	font-size: 20px;
 	color:white;
 	margin:20px;
-	display:block;
+	display:inline-block;
 }
 .input_row_second{
 	text-align: left;
