@@ -67,6 +67,7 @@ body{
 	color:white;
 	font-size: 22px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
+	margin: auto;
 	display: inline-block;
 	width: 200px;
 }
