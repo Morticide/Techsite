@@ -88,7 +88,7 @@ img{
 	border-color:red;
 }
 .item_container{
-	background-color: rgba(27, 30, 204, 0.60);
+	background-color: rgba(123, 156, 226, 0.50);
 	color: white;
 	font-size: 25px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -141,8 +141,11 @@ img{
 	background-color: black;
 	height: 75px;
 	margin: 3% 0px 0px 0px;
-	opacity: .7;
+	opacity: .0;
 	width: auto;
+}
+.top_progress_bar_show{
+	opacity: .7;
 }
 .triangle{
 	color: black;

@@ -43,6 +43,7 @@ function homePageFunct(id){
 			var chrImage = "ChromeOS";
 			var contentArray = [winImage,macImage,chrImage];
 			removeContents(contentArray,3,1);
+			$(".top_progress_bar").css('opacity','.7');
 			break;
 		case 2:
 			break;
@@ -189,6 +190,7 @@ function backBtnClick(id){
 			var repairDevice = "Repair my Device";
 			var clientInfo =   "Look up my Appointment";
 			var newElements = [repairDevice,clientInfo];
+			$(".top_progress_bar").css('opacity','.0');
 			$(".bread_crumb").last().fadeOut(600,'swing');
 			$(".bread_crumb").last().promise().done(function(){
 				$(".bread_crumb").last().remove();
