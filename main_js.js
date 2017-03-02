@@ -73,6 +73,34 @@ function continueFunct(use){
 	else{return activeItems;}
 }
 
+function dataValFunct(){
+	var firstName = $("#firstname").val();
+	var lastName = $("#lastname").val();
+	var email = $("#email").val();
+	var textArea = $("#textarea").val();
+	
+	if(firstName == ""){
+		$("#firstname").addClass("invalid_entry");
+	}
+	else{
+		$("#firstname").removeClass("invalid_entry");
+	}
+	
+	if(lastName == ""){
+		$("#lastname").addClass("invalid_entry");
+	}
+	else{
+		$("#lastname").removeClass("invalid_entry");
+	}
+	
+	if(email == ""){
+		$("#email").addClass("invalid_entry");
+	}
+	else{
+		$("#email").removeClass("invalid_entry");
+	}
+}
+
 function btnOptions(id){
 	console.log("Service Choice Button Clicked");
 	
@@ -210,65 +238,35 @@ function drawClientPage(slctOptions){
 		var secondInput = $("<div></div>").addClass("input_pair");
 	var secondRow = $("<tr></tr>").addClass("input_row");
 		var thirdInput = $("<div></div>").addClass("input_pair");
-		var fourthInput = $("<div></div>").addClass("input_pair");
-	var thirdRow = $("<tr></tr>").addClass("input_row");
-		var fifthInput = $("<div></div>").addClass("input_pair");
-		var sixthInput = $("<div></div>").addClass("input_pair");
-	var fourthRow = $("<tr></tr>").addClass("input_row");
-		var seventhInput = $("<div></div>").addClass("input_pair");
-		var eighthInput = $("<div></div>").addClass("input_pair");
+		var hiddenInput = $("<input type='hidden' name='total' id='total' value=''>");
 	
 	var firstNameLab = $("<th><label for='firstname'>* First Name:</label></th>");
-	var firstName = $("<th><input type='text' name = 'firstname'></th>");
+	var firstName = $("<input type='text' value = '' id = 'firstname' required>");
 	var lastNameLab = $("<th><label for='lastname'>* Last Name:</label></th>");
-	var lastName = $("<th><input type='text' mame = 'lastname'></th>");
+	var lastName = $("<input type='text' id = 'lastname'>");
+	firstName.addClass("input_field");
+	lastName.addClass("input_field");
 	
 	firstInput.append(firstNameLab,firstName);
 	secondInput.append(lastNameLab,lastName);
 	firstRow.append(firstInput,secondInput);
 	
 	var emailLab = $("<th><label for='email'>* Email:</label></th>");
-	var email = $("<th><input type='text' mame = 'email'></th>");
-	var addressLab = $("<th><label for='address'>Home Address:</label></th>");
-	var address = $("<th><input type='text' mame = 'address'></th>");
+	var email = $("<input type='text'  id = 'email'>");
+	email.addClass("input_field");
 	
 	thirdInput.append(emailLab,email);
-	fourthInput.append(addressLab,address);
-	secondRow.append(thirdInput,fourthInput);
+	secondRow.append(thirdInput,hiddenInput);
 	
-	var cityLab = $("<th><label for='city'>City:</label></th>");
-	var city = $("<th><input type='text' mame = 'city'></th>");
-	var zipLab = $("<th><label for='address'>Zip:</label></th>");
-	var zip = $("<th><input type='text' mame = 'zip'></th>");
-	
-	fifthInput.append(cityLab,city);
-	sixthInput.append(zipLab,zip);
-	thirdRow.append(fifthInput,sixthInput);
-	
-	var dateLab = $("<th><label for='schDate'>Schedule a visit date</label></th>");
-	var date = $("<th><input type='date' name='schDate'></th>");
-	
-	var timeLab = $("<th><label for='time'>Pick a Time</label></th>");
-	var time = $("<th><input name='time' type='time'></th>");
-	date.addClass("date_picker");
-	
-	seventhInput.append(dateLab,date);
-	eighthInput.append(timeLab,time);
-	fourthRow.append(seventhInput,eighthInput);
-	
-	var labels = [firstNameLab,lastNameLab,emailLab,addressLab,cityLab,zipLab,dateLab,timeLab];
-	var inputText = [firstName,lastName,email,address,city,zip,date,time];
+	var labels = [firstNameLab,lastNameLab,emailLab];
 	
 	labels.forEach(function(labels){
 		labels.addClass("input_label");
 	});
-	inputText.forEach(function(inputText){
-		inputText.addClass("input_label");
-	});
 	
 	var fifthRow = $("<tr class='input_row'></tr>");
 	slctOptions.forEach(function(slctOptions){
-		if(slctOptions == 'Other'){
+		if(slctOptions == 'Not Sure?'){
 		}
 		else{
 			var repairOpt = $("<th></th>");
@@ -278,8 +276,8 @@ function drawClientPage(slctOptions){
 		}
 	});
 	var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below if applicable</th></tr>");
-	var textField = $("<tr class = 'input_row' ><th><textarea name = 'other' type='text' rows='4' cols='50' class = 'other_text'></textarea></th></tr>");
-	formTable.append(firstRow,secondRow,thirdRow,fourthRow,fifthRow,otherExp,textField);
+	var textField = $("<tr class = 'input_row' ><th><textarea id='textarea' name = 'other' type='text' rows='4' cols='50' class = 'other_text'></textarea></th></tr>");
+	formTable.append(firstRow,secondRow,fifthRow,otherExp,textField);
 	
 	transistionSlideOutFadeIn(formTable,15);
 }
@@ -371,6 +369,11 @@ function transistionSlideOutFadeIn(content,id) {
 				if(id == 13){
 					id++;
 					var continue_btn = $("<div id = "+id+" onclick='continueFunct(1)'> Continue </div>").addClass("back_btn");
+					back_btn_container.append(back_btn,continue_btn);
+				}
+				else if(id == 15){
+					id++;
+					var continue_btn = $("<div onclick='dataValFunct()'> Submit </div>").addClass("back_btn");
 					back_btn_container.append(back_btn,continue_btn);
 				}
 				else{back_btn_container.append(back_btn);}

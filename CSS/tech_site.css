@@ -57,10 +57,13 @@ body{
 	font-size: 22px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	display: inline-block;
+	margin: 10px;
 	width: 200px;
 }
-.input_pair{
-	display: inline-block;
+.input_field{
+	font-size: 20px;
+	height: 20px;
+	width: 230px;
 }
 .input_row{
 	font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -69,10 +72,12 @@ body{
 	margin:20px;
 	display:block;
 }
-input[type = "text"]{
-	height:20px;
-	width: 230px;
-	font-size: 20px;
+.input_row_second{
+	text-align: left;
+}
+.invalid_entry{
+	border: 2px solid;
+	border-color:red;
 }
 .item_container{
 	background-color: rgba(27, 30, 204, 0.60);
@@ -88,21 +93,6 @@ input[type = "text"]{
 	position: relative;
 }
 .item_container:hover{
-	border: 1px solid rgba(255, 255, 255, 0.60);
-	cursor: default;
-	background-color: rgba(5, 6, 54, 0.60);
-}
-.item_container_sibling{
-	height: 100%;
-	width: 100%;
-	left: 0;
-	top: 0;
-	padding:3%;
-	margin: 3%;
-	position: absolute;
-	border-radius: 5px;
-}
-.item_container_sibling:hover{
 	border: 1px solid rgba(255, 255, 255, 0.60);
 	cursor: default;
 	background-color: rgba(5, 6, 54, 0.60);
