@@ -8,6 +8,7 @@ $(document).ready(function(){
 	if (screen.width < 480) {
 		$("#viewport").attr("content", "width=480");
 		$(".main_container").css("margin-top","30%");
+		$(".item_container").css("padding","4%");
 	}
 });
 
@@ -341,9 +342,15 @@ function transistionSlideOutFadeIn(content,id) {
 					tempContainer.append(content);
 					tempContainer.append(tempTriangle);
 					tempContainer.addClass("item_container");
+					if (screen.width < 480) {
+						tempContainer.css("padding","4%");
+					}
 				}
 				else{
 					tempContainer.addClass("item_container");
+					if (screen.width < 480) {
+						tempContainer.css("padding","4%");
+					}
 					tempContainer.append(content);
 				}
 			}
@@ -351,6 +358,9 @@ function transistionSlideOutFadeIn(content,id) {
 			else{
 				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
 				tempContainer.addClass("item_container");
+				if (screen.width < 480) {
+						tempContainer.css("padding","4%");
+				}
 				tempContainer.append(content);
 			}
 			osColorFunct(id,tempContainer);
