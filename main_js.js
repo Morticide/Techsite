@@ -338,7 +338,7 @@ function transistionSlideOutFadeIn(content,id) {
 			if(id >= 3 && id <= 14){
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 				if(id >= 7 && id <= 11){
-					var tempTriangle = "<div class ='triangle' onclick = triangleInfo("+id+")><div class= 'triangle_text'>?</div></div>";
+					var tempTriangle = "<div class ='triangle' onclick = triangleInfo("+id+")><img class = 'question_mark_img' src='CSS/Images/question_mark.png' height = '20px' width = '20px'></div>";
 					tempContainer.append(content);
 					tempContainer.append(tempTriangle);
 					tempContainer.addClass("item_container");

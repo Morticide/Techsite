@@ -65,6 +65,11 @@ img{
 	border-radius: 5px;
 	border: 1px solid rgba(255, 255, 255, 0.72);
 }
+.question_mark_img{
+	height: 20px;
+	width: 20px;
+	position: absolute;
+}
 .input_block{
 	text-align:center;
 }
@@ -158,12 +163,13 @@ img{
 	right: 0;
 	width: 0;
     height: 0;
-    border: solid 15px;
+    border: solid 20px;
     border-radius: 3px;
     border-color: transparent white white transparent;
 }
 .triangle:hover{
-    border: solid 18px;
+    border: solid 20px;
+    border-radius: 3px;
     border-color: transparent #1162ff #1162ff transparent;
 }
 .triangle_text{
