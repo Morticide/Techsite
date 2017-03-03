@@ -13,10 +13,16 @@ $(document).ready(function(){
 });
 
 function removeHelp(){
-	console.log("attempting removal of help box");
 	$(".help_box").remove();
 }
-
+function removeOpts(id){
+	console.log('attempting to remove repair opts');
+	var item = $("#"+id);
+	slideFunct(item,600,'swing',-($(window).width()));
+	item.promise().done(function(){
+		item.remove();
+	});
+}
 function estTotal(){
 	var activeItems = continueFunct(0);
 	var price = [];
@@ -61,23 +67,24 @@ function continueFunct(use){
 	var i;
 	var slctOptions = [];
 	var activeItems = [];
+	var prices = [];
 	
 	for(i = 7; i <= 12; i++){
 		var temp = $('#'+i);
 		if(temp.attr('class') == "item_container item_container_selected"){
 			slctOptions.push(temp.clone().children().remove().end().text());
+			prices.push(i);
 			activeItems.push(1);
 		}
 		else{
 			activeItems.push(0);
 		}
 	}
-	
-	slctOptions.push($(".bread_crumb").last().text());
-	
 	if(use == 1){
-		removeContents(3,slctOptions,1);
+		prices.unshift(3);
+		removeContents(prices,slctOptions,1);
 	}
+	
 	else{return activeItems;}
 }
 
@@ -233,7 +240,7 @@ function problemPage(action){
 	addBreadCrumb('Estimate: $ 0');
 }
 
-function drawClientPage(slctOptions){
+function drawClientPage(pricing,slctOptions){
 	var table = $("<div class='table'></div>");
 	var firstRow = $("<tr></tr>").addClass("input_row");
 		var firstInput = $("<div></div>").addClass("input_pair");
@@ -267,20 +274,47 @@ function drawClientPage(slctOptions){
 	});
 	
 	var fifthBlock = $("<div class='input_block'></div>");
+	var t = 1;
 	slctOptions.forEach(function(slctOptions){
+		
 		if(slctOptions == 'Not Sure?'){
 		}
+		else if(slctOptions == 3){
+		}
 		else{
-			var repairOpt = $("<tr><th></th>,</tr>");
+			console.log(t);
+			var curPrice = getPrice(pricing[t]);
+			console.log(curPrice);
+			var repairOptRow = $("<tr id = "+t+"></tr>").addClass("repair_opts_row");
+			var repairOpt = $("<th></th>");
+			var priceOpt = $("<th></th>").addClass("price_opts");
+			var removeOpt = $("<th onclick = removeOpts("+t+")>X</th>").addClass("remove_opts");
+			priceOpt.append(curPrice);
 			repairOpt.append(slctOptions);
-			repairOpt.addClass("input input_label repair_opts");
-			fifthBlock.append(repairOpt);
+			repairOptRow.append(repairOpt,priceOpt,removeOpt);
+			repairOpt.addClass("repair_opts");
+			fifthBlock.append(repairOptRow);
+			t++;
 		}
 	});
 	var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below if applicable</th></tr>");
 	var textField = $("<tr class = 'input_row' ><th><textarea id='textarea' name = 'other' type='text' class = 'text_area'></textarea></th></tr>");
 	table.append(firstRow,secondRow,fifthBlock,otherExp,textField);
 	transistionSlideOutFadeIn(table,15);
+}
+
+function getPrice(id){
+	switch(id){
+		case 7: return 69.99;
+			
+		case 8: return 99.99;
+			
+		case 9: return 39.99;
+			
+		case 10: return 29.99;
+			
+		case 11: return 49.99;
+	}
 }
 
 function addBreadCrumb(breadCrumbText){
@@ -297,7 +331,7 @@ function slideFunct(animElement,duration,settings,marginValue) {
 		}, jQuery.speed(duration,settings));
 	};
 	
-function removeContents(content,id,action){
+function removeContents(content,element,action){
 	var item = $(".sub_container");
 	if(action == 1){
 		slideFunct(item,600,'swing',-($(window).width()));
@@ -306,14 +340,12 @@ function removeContents(content,id,action){
 		slideFunct(item,600,'swing',($(window).width()));
 		item.css('position','fixed');
 	}
-	
 	item.promise().done(function(){
 		item.remove();
-		if(content == 3){drawClientPage(id);}
+		if(content[0] == 3){drawClientPage(content,element);}
 		else{
-			transistionSlideOutFadeIn(content,id);
+			transistionSlideOutFadeIn(content,element);
 		}
-		
 	});
 	
 }

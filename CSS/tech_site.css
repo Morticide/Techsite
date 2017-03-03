@@ -127,11 +127,36 @@ img{
 	margin-top: 12%;
 	text-align: center;
 }
-
+.price_opts{
+	width: 25px;
+	padding-right: 20px;
+	text-align: right;
+}
 .repair_opts{
+	width: 150px;
+	text-align: left;
+}
+.remove_opts{
+	text-align: center;
+	margin: 0px 10px 0px 10px;
+	font-size: 20px;
+	padding: 5px;
+}
+.remove_opts:hover{
+	background-color: white;
+	color:black;
+	cursor: default;
+}
+.repair_opts_row{
 	border: .5px solid rgba(255, 255, 255, 0.79);
 	display:block;
-	padding: 2% 3% 2% 3%;
+	padding: 2% 2% 2% 2%;
+	color:white;
+	text-align: left;
+	font-size: 20px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	margin: auto;
+	width:200px;
 }
 .sub_container{
 	position: relative;
