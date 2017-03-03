@@ -38,6 +38,7 @@ function removeOpts(id){
 			}
 		total = Math.round(total * 100) / 100;
 		$(".bread_crumb").last().text('Estimate: $ '+total);
+		$("th.price_opts").last().text(total);
 	});
 }
 function estTotal(){
@@ -97,8 +98,10 @@ function continueFunct(use){
 			activeItems.push(0);
 		}
 	}
+	slctOptions.push("Estimate: ");
 	if(use == 1){
 		prices.unshift(3);
+		prices.push(estTotal());
 		removeContents(prices,slctOptions,1);
 	}
 	
@@ -287,6 +290,7 @@ function drawClientPage(pricing,slctOptions){
 	});
 	var fifthBlock = $("<div class='input_block'></div>");
 	var t = 1;
+	var estIndex = slctOptions.length;
 	slctOptions.forEach(function(slctOptions){
 		
 		if(slctOptions == 'Not Sure?'){
@@ -294,11 +298,18 @@ function drawClientPage(pricing,slctOptions){
 		else if(slctOptions == 3){
 		}
 		else{
-			var curPrice = getPrice(pricing[t]);
+			if(t == estIndex){
+				var curPrice = pricing[t];
+			}
+			else{
+				curPrice = getPrice(pricing[t]);
+				var removeOpt = $("<th onclick = removeOpts("+t+")>X</th>").addClass("remove_opts");
+			}
+			
 			var repairOptRow = $("<tr id = "+t+"></tr>").addClass("repair_opts_row");
 			var repairOpt = $("<th></th>");
 			var priceOpt = $("<th></th>").addClass("price_opts");
-			var removeOpt = $("<th onclick = removeOpts("+t+")>X</th>").addClass("remove_opts");
+			
 			priceOpt.append(curPrice);
 			repairOpt.append(slctOptions);
 			repairOptRow.append(repairOpt,priceOpt,removeOpt);
