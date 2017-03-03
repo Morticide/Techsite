@@ -3,8 +3,6 @@
 $(document).ready(function(){
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
-	
-	
 	if (screen.width < 480) {
 		$("#viewport").attr("content", "width=480");
 		$(".main_container").css("margin-top","30%");
@@ -16,11 +14,29 @@ function removeHelp(){
 	$(".help_box").remove();
 }
 function removeOpts(id){
-	console.log('attempting to remove repair opts');
 	var item = $("#"+id);
+	var price = item.children("th.price_opts");
+	var service = item.children("th.repair_opts").text();
 	slideFunct(item,600,'swing',-($(window).width()));
 	item.promise().done(function(){
 		item.remove();
+		var total = $(".bread_crumb").last().text();
+		total = total.substr(12,total.length);
+		var priceVal = price.text();
+		total = total - priceVal;
+		var match_id;
+		if(service == "Diagnostics"){
+			match_id = id+1;
+		}
+		if(service == "Virus Removal"){
+			match_id = id-1;
+		}
+		var match_service = $("#"+match_id).children("th.repair_opts").text();
+		if(match_service == "Virus Removal" || match_service == "Diagnostics"){
+				total +=24;
+			}
+		total = Math.round(total * 100) / 100;
+		$(".bread_crumb").last().text('Estimate: $ '+total);
 	});
 }
 function estTotal(){
@@ -117,7 +133,6 @@ function dataValFunct(){
 }
 
 function btnOptions(id){
-	console.log("Service Choice Button Clicked");
 	
 	var tag;
 		switch(id){
@@ -148,7 +163,6 @@ function btnOptions(id){
 }
 
 function triangleInfo(id){
-	console.log("Triangle Clicked");
 	$(document).on("mousedown",removeHelp);
 	var helpBox = $("<div class= 'help_box' onclick = removeHelp()></div>");
 	var helpBoxText = $("<ul></ul>");
@@ -282,9 +296,7 @@ function drawClientPage(pricing,slctOptions){
 		else if(slctOptions == 3){
 		}
 		else{
-			console.log(t);
 			var curPrice = getPrice(pricing[t]);
-			console.log(curPrice);
 			var repairOptRow = $("<tr id = "+t+"></tr>").addClass("repair_opts_row");
 			var repairOpt = $("<th></th>");
 			var priceOpt = $("<th></th>").addClass("price_opts");
