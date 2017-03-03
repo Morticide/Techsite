@@ -3,6 +3,12 @@
 $(document).ready(function(){
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
+	
+	
+	if (screen.width < 480) {
+		$("#viewport").attr("content", "width=480");
+		$(".main_container").css("margin-top","30%");
+	}
 });
 
 function removeHelp(){
@@ -323,14 +329,12 @@ function transistionSlideOutFadeIn(content,id) {
 		var newDynContainer = $("<div></div>").addClass("sub_container");
 		
 		if (id >= 15){
-				newDynContainer.width("75%");
 				newDynContainer.css('background-color','rgba(7,3,36,.85');
 				newDynContainer.append(content);
 		}
 		else{
 			content.forEach(function(content){
 			if(id >= 3 && id <= 14){
-				newDynContainer.width("75%");
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 				if(id >= 7 && id <= 11){
 					var tempTriangle = "<div class ='triangle' onclick = triangleInfo("+id+")><div class= 'triangle_text'>?</div></div>";

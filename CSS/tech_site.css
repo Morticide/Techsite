@@ -9,6 +9,14 @@ img{
 	left: 0;
 }
 
+@media screen and (max-width: 980px){ 
+	.main_container{
+		margin-top: 30%;
+	}
+	
+}
+
+
 .back_btn{
 	margin-top:10%;
 	background-color: rgba(72, 46, 116, 0.53);
@@ -17,14 +25,13 @@ img{
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	border-radius: 5px;
 	border: 1px solid rgba(255, 255, 255, 0.72);
-	padding:3%;
-	margin: 4%;
+	padding:1%;
+	margin: 2%;
 	display: inline-block;
 }
 .back_btn_container{
 	text-align:center;
 	margin:auto;
-	width: 300px;
 }
 .back_btn:hover{
 	cursor: default;
@@ -113,7 +120,6 @@ img{
 }
 .main_container{
 	margin-top: 12%;
-	position:relative;
 	text-align: center;
 }
 
@@ -127,7 +133,7 @@ img{
 	text-align:center;
 	vertical-align: middle;
 	margin:auto;
-	width: 75%;
+	width: 60%;
 }
 .text-area{
 	font-family: 'Times New Roman', sans-serif;
