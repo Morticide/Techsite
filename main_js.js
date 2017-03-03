@@ -3,10 +3,11 @@
 $(document).ready(function(){
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
-	if (screen.width < 480) {
+	if (screen.width < 1025) {
 		$("#viewport").attr("content", "width=480");
 		$(".main_container").css("margin-top","30%");
 		$(".item_container").css("padding","4%");
+		$(".")
 	}
 });
 
@@ -201,7 +202,6 @@ function triangleInfo(id){
 }
 
 function selToggle(tag){
-	var active;
 	if(tag.attr('class') == 'item_container item_container_selected'){
 		tag.removeClass("item_container_selected");
 		return 0;
@@ -256,37 +256,35 @@ function problemPage(action){
 
 function drawClientPage(pricing,slctOptions){
 	var table = $("<div class='table'></div>");
-	var firstRow = $("<tr></tr>").addClass("input_row");
+	//var firstRow = $("<tr></tr>").addClass("input_row");
 		var firstInput = $("<div></div>").addClass("input_pair");
 		var secondInput = $("<div></div>").addClass("input_pair");
-	var secondRow = $("<tr></tr>").addClass("input_row");
+	//var secondRow = $("<tr></tr>").addClass("input_row");
 		var thirdInput = $("<div></div>").addClass("input_pair");
-		var hiddenInput = $("<input type='hidden' name='total' id='total' value=''>");
 	
-	var firstNameLab = $("<th><label for='firstname'>* First Name:</label></th>");
-	var firstName = $("<input type='text' value = '' id = 'firstname' required>");
-	var lastNameLab = $("<th><label for='lastname'>* Last Name:</label></th>");
+	var firstNameLab = $("<div for='firstname'>* First Name:</div>");
+	var firstName = $("<input type='text' value = '' id = 'firstname'>");
+	var lastNameLab = $("<div for='lastname'>* Last Name:</div>");
 	var lastName = $("<input type='text' id = 'lastname'>");
 	firstName.addClass("input_field");
 	lastName.addClass("input_field");
 	
 	firstInput.append(firstNameLab,firstName);
 	secondInput.append(lastNameLab,lastName);
-	firstRow.append(firstInput);
+	//firstRow.append(firstInput,secondInput);
 	
-	var emailLab = $("<th><label for='email'>* Email:</label></th>");
+	var emailLab = $("<div for='email'>* Email:</div>");
 	var email = $("<input type='text'  id = 'email'>");
 	email.addClass("input_field");
 	
 	thirdInput.append(emailLab,email);
-	secondRow.append(thirdInput,hiddenInput);
+	//secondRow.append(thirdInput);
 	
 	var labels = [firstNameLab,lastNameLab,emailLab];
 	
 	labels.forEach(function(labels){
 		labels.addClass("input_label");
 	});
-	
 	var fifthBlock = $("<div class='input_block'></div>");
 	var t = 1;
 	slctOptions.forEach(function(slctOptions){
@@ -309,9 +307,9 @@ function drawClientPage(pricing,slctOptions){
 			t++;
 		}
 	});
-	var otherExp = $("<tr class = 'input_row'><th>Please describe your problem below if applicable</th></tr>");
-	var textField = $("<tr class = 'input_row' ><th><textarea id='textarea' name = 'other' type='text' class = 'text_area'></textarea></th></tr>");
-	table.append(firstRow,secondRow,fifthBlock,otherExp,textField);
+	var otherExp = $("<div class = 'input_pair'>Please describe your problem below if applicable</div>");
+	var textField = $("<div class = 'input_pair'><textarea id='textarea' name = 'other' type='text' class = 'text_area'></textarea></div>");
+	table.append(firstInput,secondInput,thirdInput,fifthBlock,otherExp,textField);
 	transistionSlideOutFadeIn(table,15);
 }
 
@@ -341,7 +339,7 @@ function slideFunct(animElement,duration,settings,marginValue) {
 		return animElement.animate({
 			marginLeft: marginValue
 		}, jQuery.speed(duration,settings));
-	};
+	}
 	
 function removeContents(content,element,action){
 	var item = $(".sub_container");
@@ -382,17 +380,17 @@ function transistionSlideOutFadeIn(content,id) {
 			if(id >= 3 && id <= 14){
 				var tempContainer = $("<div onclick='btnOptions("+id+")' id = "+id+"></div>");
 				if(id >= 7 && id <= 11){
-					var tempTriangle = "<div class ='triangle' onclick = triangleInfo("+id+")><img class = 'question_mark_img' src='CSS/Images/question_mark.png' height = '20px' width = '20px'></div>";
+					var tempTriangle = "<div class ='triangle' onclick = triangleInfo("+id+")><img class = 'question_mark_img' src='CSS/Images/question_mark.png'></div>";
 					tempContainer.append(content);
 					tempContainer.append(tempTriangle);
 					tempContainer.addClass("item_container");
-					if (screen.width < 480) {
+					if (screen.width < 1025) {
 						tempContainer.css("padding","4%");
 					}
 				}
 				else{
 					tempContainer.addClass("item_container");
-					if (screen.width < 480) {
+					if (screen.width < 1025) {
 						tempContainer.css("padding","4%");
 					}
 					tempContainer.append(content);
@@ -400,9 +398,9 @@ function transistionSlideOutFadeIn(content,id) {
 			}
 			
 			else{
-				var tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
+				tempContainer = $("<div onclick = 'homePageFunct("+id+")'></div>");
 				tempContainer.addClass("item_container");
-				if (screen.width < 480) {
+				if (screen.width < 1025) {
 						tempContainer.css("padding","4%");
 				}
 				tempContainer.append(content);
@@ -424,7 +422,7 @@ function transistionSlideOutFadeIn(content,id) {
 				}
 				else if(id == 15){
 					id++;
-					var continue_btn = $("<div onclick='dataValFunct()'> Submit </div>").addClass("back_btn");
+					continue_btn = $("<div onclick='dataValFunct()'> Submit </div>").addClass("back_btn");
 					back_btn_container.append(back_btn,continue_btn);
 				}
 				else{back_btn_container.append(back_btn);}
