@@ -8,9 +8,7 @@
 <link rel="stylesheet" href="CSS/tech_site.css">
 <!--fonts-->
 <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
-<!--javascript libs-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="main_js.js"></script>
+
 <!--viewport-->
 <meta name=viewport content='width=400, initial-scale = 1.0'>
 </head>
@@ -31,6 +29,9 @@
 </div>
 
 </body>
+<!--javascript libs-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="main_js.js"></script>
 <html>
 	
 
