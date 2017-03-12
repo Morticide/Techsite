@@ -3,6 +3,7 @@
 $(document).ready(function(){
 	$('#1').click(function(){ homePageFunct(1)});
 	$('#2').click(function(){ homePageFunct(2)});
+	console.log("Hello?");
 	if (screen.width < 1025) {
 		$("#viewport").attr("content", "width=480");
 		$(".main_container").css("margin-top","30%");
@@ -292,8 +293,9 @@ function drawClientPage(pricing,slctOptions){
 	var t = 1;
 	var estIndex = slctOptions.length;
 	slctOptions.forEach(function(slctOptions){
-		
+		console.log(slctOptions);
 		if(slctOptions == 'Not Sure?'){
+			
 		}
 		else if(slctOptions == 3){
 		}
