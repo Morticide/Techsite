@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
 <head>
 <title>Tech Site</title>
 <!--Created by Sergei Scharrenberg-->
-<!--Photography by Barry Bakarian-->
+<!--Photography and UI design by Barry Bakarian-->
 <!--stylesheets-->
 <link rel="stylesheet" href="CSS/tech_site.css">
 <!--fonts-->

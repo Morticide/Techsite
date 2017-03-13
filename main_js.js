@@ -293,9 +293,9 @@ function drawClientPage(pricing,slctOptions){
 	var t = 1;
 	var estIndex = slctOptions.length;
 	slctOptions.forEach(function(slctOptions){
-		console.log(slctOptions);
 		if(slctOptions == 'Not Sure?'){
-			
+			console.log("item selected");
+			t++;
 		}
 		else if(slctOptions == 3){
 		}
