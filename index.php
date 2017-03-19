@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<img src="CSS/Images/Home_Page_Background.jpg" class="image" />
+<img src="CSS/Images/Home_Page_Background.gif" class="image" />
 <div class= "top_progress_bar" >
 </div>
 <div class="main_container">
