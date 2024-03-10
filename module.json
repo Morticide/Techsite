@@ -1,0 +1,42 @@
+{
+  "title": "Quick Doors",
+  "description": "Create and remove doors and windows with one click.",
+  "version": "1.1",
+  "authors": [
+    {
+      "name": "theripper93",
+      "email": "tsplab@gmail.com",
+      "url": "https://www.patreon.com/theripper93"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "scripts": [
+    "scripts/main.js",
+    "scripts/config.js",
+    "scripts/module.js"
+  ],
+  "styles": [
+    "styles/module.css"
+  ],
+  "socket": true,
+  "id": "quick-doors",
+  "relationships": {
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  },
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  }
+}
